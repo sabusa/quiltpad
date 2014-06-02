@@ -1,0 +1,48 @@
+Comp 2613 Assignment #1
+ Sandra Buchanan
+ A00192788
+ 
+ Proposal for quiltpad project
+ 
+ 1.  The quiltpad application is a basic paint program that makes a quilt block which is 
+ segemented into triangles, squares and rectangles which are coloured using grey scale values 
+ (light, medium, dark).  The quilt block is then replicated to create a full quilt.  
+ The application also lists the size and number of each specific-shaped piece required 
+ to make the quilt.
+ 
+ 2. Classes:
+	   Quilt
+	   Block
+	   Piece	   	
+	
+ 3. Attributes for each class:
+ 
+	Quilt:
+		blkQty
+		vBlkNo
+		hBlkNo
+		qHeight
+		qWidth
+		
+	Block:
+		name
+		uniquePieceQty
+		blkSize
+ 
+    	Piece:
+	   	type (sqr, rect, halfTri, quartTri)
+	   	value (light, medium, dark)
+		position
+		vSideLength
+		hSideLength
+		aSideLength
+	   	bSideLength
+	   	cSideLength
+	   	value 
+	  	qtyPerBlk
+	   
+ 4. Use Cases:
+	a) Replicate block to fill in specified quilt grid (i.e 4 by 3 quilt)
+	b) Calculate the number and size for each different fabric piece (i.e. shape,
+	      size and value) required to make full quilt.
+    
