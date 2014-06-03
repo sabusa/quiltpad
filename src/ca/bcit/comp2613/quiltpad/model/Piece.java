@@ -5,10 +5,10 @@ import java.awt.Point;
 public class Piece {
 	
 	private Integer id;
-	private Integer type;
-	private Integer value;
+	private ShapeType sType; 
+	private FabricValue fValue;
 	private Point position;
-	private Integer vSideLength;
+	private Integer vSideLength;   
 	private Integer hSideLength;
 	private Integer aSideLength;
 	private Integer bSideLength;
@@ -17,13 +17,14 @@ public class Piece {
 	public Piece() {
 		super();
 	}
-	public Piece(Integer id, Integer type, Integer value, Point position,
-			Integer vSideLength, Integer hSideLength, Integer aSideLength,
-			Integer bSideLength, Integer cSideLength) {
+	
+	public Piece(Integer id, ShapeType sType, FabricValue fValue,
+			Point position, Integer vSideLength, Integer hSideLength,
+			Integer aSideLength, Integer bSideLength, Integer cSideLength) {
 		super();
 		this.id = id;
-		this.type = type;
-		this.value = value;
+		this.sType = sType;
+		this.fValue = fValue;
 		this.position = position;
 		this.vSideLength = vSideLength;
 		this.hSideLength = hSideLength;
@@ -31,23 +32,24 @@ public class Piece {
 		this.bSideLength = bSideLength;
 		this.cSideLength = cSideLength;
 	}
+	
 	public Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Integer getType() {
-		return type;
+	public ShapeType getsType() {
+		return sType;
 	}
-	public void setType(Integer type) {
-		this.type = type;
+	public void setsType(ShapeType sType) {
+		this.sType = sType;
 	}
-	public Integer getValue() {
-		return value;
+	public FabricValue getfValue() {
+		return fValue;
 	}
-	public void setValue(Integer value) {
-		this.value = value;
+	public void setfValue(FabricValue fValue) {
+		this.fValue = fValue;
 	}
 	public Point getPosition() {
 		return position;
@@ -85,11 +87,12 @@ public class Piece {
 	public void setcSideLength(Integer cSideLength) {
 		this.cSideLength = cSideLength;
 	}
+
 	@Override
 	public String toString() {
-		return "Piece [Id = " + id + ", Type = " + type + ", Value = " + value
-				+ ", Position = " + position + ", Vertical Side Length = " + vSideLength
-				+ ", Horizontal Side Length = " + hSideLength + ", A Side Length = "
+		return "Piece [Id = " + id + ", Type=" + sType + ", Fabric Value = " + fValue
+				+ ", Position = " + position + ", Vertical Length = " + vSideLength
+				+ ", Horizontal Length = " + hSideLength + ", A Side Length = "
 				+ aSideLength + ", B Side Length = " + bSideLength
 				+ ", C Side Length = " + cSideLength + "]";
 	}

@@ -1,28 +1,29 @@
 package ca.bcit.comp2613.a00192788.util;
 
 import ca.bcit.comp2613.quiltpad.model.Piece;
-
+import ca.bcit.comp2613.quiltpad.model.ShapeType;
+import ca.bcit.comp2613.quiltpad.model.FabricValue;
 import java.util.ArrayList;
 import java.util.Random;
 
 public class PieceUtil {
 	private final static Integer MAX_LENGTH = 16;
 	private final static Integer MAX_HYP = 24;
-	private final static Integer MAX_OBJS = 100;
+	private final static Integer MAX_OBJS = 100;	
 	
 	public static ArrayList<Piece> createPieces() {
 		ArrayList<Piece> retpieces = new ArrayList<>();
 		Random rand = new Random();
+		ShapeType shape; 
 	
-		int pieceQty = rand.nextInt(MAX_OBJS);
-		System.out.println(pieceQty);
-		for (int i = 0; i < pieceQty; i++) {
+		for (int i = 0; i < MAX_OBJS; i++) {
 			Piece piece = new Piece();
-			piece.setId(i);
-			piece.setType(rand.nextInt(5));
-			piece.setValue(rand.nextInt(3));
+			piece.setId(i+1);
+			piece.setsType(ShapeType.values()[rand.nextInt(ShapeType.values().length)]);
+			piece.setfValue(FabricValue.values()[rand.nextInt(FabricValue.values().length)]);
 			piece.setPosition(null);
-			if (piece.getType() < 3){
+			shape = piece.getsType();
+			if ((shape == ShapeType.SQR)||(shape == ShapeType.RECT)) {
 				piece.sethSideLength(rand.nextInt(MAX_LENGTH));
 				piece.setvSideLength(rand.nextInt(MAX_LENGTH));
 			}
