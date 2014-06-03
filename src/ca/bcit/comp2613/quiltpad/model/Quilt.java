@@ -2,20 +2,31 @@ package ca.bcit.comp2613.quiltpad.model;
 
 public class Quilt {
 	
+	private Integer id;
 	private Integer blkQty;
 	private Integer vBlkNo;
 	private Integer hBlkNo;
 	private Float qHeight;
-	private Float qWidth;	
-
-	public Quilt(Integer blkQty, Integer vBlkNo, Integer hBlkNo, Float qHeight,
-			Float qWidth) {
+	private Float qWidth;
+		
+	public Quilt() {
 		super();
+	}
+	public Quilt(Integer id, Integer blkQty, Integer vBlkNo, Integer hBlkNo,
+			Float qHeight, Float qWidth) {
+		super();
+		this.id = id;
 		this.blkQty = blkQty;
 		this.vBlkNo = vBlkNo;
 		this.hBlkNo = hBlkNo;
 		this.qHeight = qHeight;
 		this.qWidth = qWidth;
+	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	public Integer getBlkQty() {
 		return blkQty;
@@ -47,5 +58,12 @@ public class Quilt {
 	public void setqWidth(Float qWidth) {
 		this.qWidth = qWidth;
 	}
+	@Override
+	public String toString() {
+		return "Quilt [Id = " + id + ", Block Quantity = " + blkQty + ", Vertical Block Numbers = " + vBlkNo
+				+ ", Horizontal Block Numbers = " + hBlkNo + ", Quilt Height = " + qHeight + ", Quilt Width = "
+				+ qWidth + "]";
+	}
+
 
 }
