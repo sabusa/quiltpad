@@ -18,36 +18,33 @@ public class TestDriver {
 			// anonymous inner class overriding method //
 			public void pieceChecker() throws IllegalSizeException {
 				Random rand = new Random();
-		
+				
+				// make and print pieces //
 				ArrayList<Piece> pieces = PieceUtil.createPieces();
-		
+				PieceUtil.printPieces(pieces);	
+				
 				// randomly generate exception 20% of the time //
-				try{
-					int randInt = rand.nextInt();
-					if (randInt %5 == 0) {
-						System.out.println("Not a valid length");
-						throw new IllegalLengthException();	
-					}
+				int randInt = rand.nextInt(100);
+				if (randInt %5 == 0) {
+					System.err.println("Generated 20% error");
+					throw new IllegalLengthException();	
 				}
-				catch (IllegalLengthException e) {
-					System.out.println("Generated exception!");
-				}
-				// test bad vertical length of "1" which occurs 1% of the time //
-				finally {
-					pieces = PieceUtil.searchLength(pieces,1);
-					//PieceUtil.printPieces(pieces);
-				}
+				//  randomly generate exception 1% of the time //
+				if (randInt == 1) {
+						System.err.println("Generated 1% error");
+						throw new IllegalSizeException();			
+				}		
 			}	
 		};
 			
-			try {
-				block.pieceChecker();
-			}
-			catch (IllegalSizeException e) {			
-				e.printStackTrace(); 
+		// main program //	
+		try {
+			block.pieceChecker();
 		}
+		catch (IllegalSizeException e) {
+			e.printStackTrace(); 
+		}	
 		
 	}
-
 	
 }

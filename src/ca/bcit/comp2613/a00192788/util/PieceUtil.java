@@ -20,10 +20,21 @@ public class PieceUtil {
 	
 		for (int i = 0; i < MAX_OBJS; i++) {
 			Piece piece = new Piece();
+			
+			// initialize all side lengths to 0 //
+			piece.setvSideLength(0);
+			piece.sethSideLength(0);
+			piece.setaSideLength(0);
+			piece.setbSideLength(0);
+			piece.setcSideLength(0);
+			
+			// set all properties of piece to random values //
 			piece.setId(i+1);
 			piece.setsType(ShapeType.values()[rand.nextInt(ShapeType.values().length)]);
 			piece.setfValue(FabricValue.values()[rand.nextInt(FabricValue.values().length)]);
 			piece.setPosition(null);
+			
+			// set random side lengths based on shape //
 			shape = piece.getsType();
 			if ((shape == ShapeType.SQR)||(shape == ShapeType.RECT)) {
 				piece.sethSideLength(rand.nextInt(MAX_LENGTH));
@@ -49,12 +60,13 @@ public class PieceUtil {
 			int lengthValue) throws IllegalSizeException {
 		
 		ArrayList<Piece> retpieces = new ArrayList<>();
+		
 		for (Piece piece : pieces) {
 			if (piece.getvSideLength() != lengthValue) {
 				retpieces.add(piece);
 			}
 			else {
-				throw new IllegalSizeException();
+				throw new IllegalSizeException("Invalid size");
 			}
 		}
 		return retpieces;

@@ -1,7 +1,7 @@
 package ca.bcit.comp2613.a00192788.util.except;
 
 @SuppressWarnings("serial")
-public class IllegalLengthException extends Exception {
+public class IllegalLengthException extends RuntimeException {
 
 	public IllegalLengthException() {
 		super();

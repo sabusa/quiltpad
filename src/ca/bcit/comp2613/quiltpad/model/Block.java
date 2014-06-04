@@ -1,6 +1,5 @@
 package ca.bcit.comp2613.quiltpad.model;
 
-import ca.bcit.comp2613.a00192788.util.PieceUtil;
 import ca.bcit.comp2613.a00192788.util.except.IllegalSizeException;
 
 public class Block {
