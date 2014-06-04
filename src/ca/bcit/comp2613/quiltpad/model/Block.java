@@ -1,5 +1,8 @@
 package ca.bcit.comp2613.quiltpad.model;
 
+import ca.bcit.comp2613.a00192788.util.PieceUtil;
+import ca.bcit.comp2613.a00192788.util.except.IllegalSizeException;
+
 public class Block {
 
 	private Integer id;
@@ -45,6 +48,9 @@ public class Block {
 	public String toString() {
 		return "Block [Id = " + id + ", Name = " + name + ", Unique Piece Quantity ="
 				+ uniquePieceQty + ", Block Size = " + blkSize + "]";
+	}
+	public void pieceChecker() throws IllegalSizeException {
+		throw new IllegalSizeException();	
 	}
 
 }
