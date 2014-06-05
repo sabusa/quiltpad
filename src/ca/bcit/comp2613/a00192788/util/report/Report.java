@@ -7,8 +7,9 @@ import ca.bcit.comp2613.quiltpad.model.Quilt;
 public class Report {
 
 	public static void printReport(ArrayList<Quilt> quilts) {
+		
+		System.out.println("New Quilts");
 		for (Quilt quilt : quilts) {
-			System.out.println("New Quilt\n\n");
 			System.out.println(quilt);
 			System.out.println("----------------------------------------------"
 					+ "--------------------------------------------");
