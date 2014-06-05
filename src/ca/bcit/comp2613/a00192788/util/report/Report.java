@@ -8,10 +8,10 @@ public class Report {
 
 	public static void printReport(ArrayList<Quilt> quilts) {
 		for (Quilt quilt : quilts) {
-			System.out.println("New Quilt\n\n");
+			System.out.println("New Quilt\n");
 			System.out.println(quilt);
 			System.out.println("----------------------------------------------"
-					+ "--------------------------------------------");
+					+ "--------------------------------------------\n\n");
 		}
 	}	
 }

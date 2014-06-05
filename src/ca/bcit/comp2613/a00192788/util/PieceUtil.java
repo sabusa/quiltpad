@@ -30,8 +30,8 @@ public class PieceUtil {
 			
 			// set all properties of piece to random values //
 			piece.setId(i+1);
-			piece.setsType(ShapeType.values()[rand.nextInt(ShapeType.values().length)]);
-			piece.setfValue(FabricValue.values()[rand.nextInt(FabricValue.values().length)]);
+			piece.setsType(ShapeType.randomShape());
+			piece.setfValue(FabricValue.randomValue());
 			piece.setPosition(null);
 			
 			// set random side lengths based on shape //
@@ -59,7 +59,7 @@ public class PieceUtil {
 	public static ArrayList<Piece> searchLength(ArrayList<Piece> pieces, 			
 			int lengthValue) throws IllegalSizeException {
 		
-		ArrayList<Piece> retpieces = new ArrayList<>();
+		ArrayList<Piece> retpieces = new ArrayList<Piece>();
 		
 		for (Piece piece : pieces) {
 			if (piece.getvSideLength() != lengthValue) {

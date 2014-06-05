@@ -1,0 +1,2 @@
+Jun 4, 2014: 
+	 Created random generator of enum and put in each enum class
