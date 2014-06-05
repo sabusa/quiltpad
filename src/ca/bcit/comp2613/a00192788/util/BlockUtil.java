@@ -12,7 +12,7 @@ public class BlockUtil {
 	private final static Integer MAX_OBJS = 100;
 	
 	public static ArrayList<Block> createBlocks() {
-		ArrayList<Block> retblocks = new ArrayList<>();
+		ArrayList<Block> retblocks = new ArrayList<Block>();
 		Random rand = new Random();
 	
 		for (int i = 0; i < MAX_OBJS; i++) {
