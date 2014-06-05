@@ -7,7 +7,7 @@ public class Block {
 	private Integer id;
 	private String name;
 	private Integer uniquePieceQty;
-	private Integer blkSize;	
+	private Integer blkQty;	
 	
 	public Block() {
 		super();
@@ -17,7 +17,7 @@ public class Block {
 		this.id = id;
 		this.name = name;
 		this.uniquePieceQty = uniquePieceQty;
-		this.blkSize = blkSize;
+		this.blkQty = blkSize;
 	}
 	public Integer getId() {
 		return id;
@@ -37,19 +37,18 @@ public class Block {
 	public void setUniquePieceQty(Integer uniquePieceQty) {
 		this.uniquePieceQty = uniquePieceQty;
 	}
-	public Integer getBlkSize() {
-		return blkSize;
+	public Integer getBlkQty() {
+		return blkQty;
 	}
-	public void setBlkSize(Integer blkSize) {
-		this.blkSize = blkSize;
+	public void setBlkQty(Integer blkQty) {
+		this.blkQty = blkQty;
 	}
 	@Override
 	public String toString() {
 		return "Block [Id = " + id + ", Name = " + name + ", Unique Piece Quantity ="
-				+ uniquePieceQty + ", Block Size = " + blkSize + "]";
+				+ uniquePieceQty + ", Block Quantity = " + blkQty + "]";
 	}
-	public void pieceChecker() throws IllegalSizeException {
-		throw new IllegalSizeException();	
-	}
+	
+
 
 }
