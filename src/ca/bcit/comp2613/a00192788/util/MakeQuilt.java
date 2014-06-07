@@ -14,14 +14,14 @@ public class MakeQuilt {
 		int i = 0;
 		
 		// make quilt when number of pieces are even and vertical length is over 50 //
-		Quilt quilt = new Quilt();
 		for (Block block : blocks) {
 			if (block.getUniquePieceQty() %2 == 0) {
 				for (Piece piece : pieces) {
 					if (piece.getvSideLength() > largeSize) {
 					
+					Quilt quilt = new Quilt();
+					
 					// set quilt properties //
-					System.out.println (i);
 					quilt.setId(i+1);
 					quilt.setBlkName(block.getName());
 					quilt.setBlkQty(block.getBlkQty());
