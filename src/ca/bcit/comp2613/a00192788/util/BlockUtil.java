@@ -20,8 +20,8 @@ public class BlockUtil {
 			
 			// set all int properties of piece to random values //
 			block.setId(i+1);
-			block.setBlkQty(rand.nextInt(MAX_QTY));
-			block.setUniquePieceQty(rand.nextInt(MAX_OBJS));
+			block.setBlkQty(rand.nextInt(MAX_QTY) + 1);
+			block.setUniquePieceQty(rand.nextInt(MAX_OBJS) + 1);
 			
 			// set name to a random value //
 			String randName = UUID.randomUUID().toString();
@@ -31,7 +31,7 @@ public class BlockUtil {
 		}
 		return retblocks;		
 	}	
-
+	
 	public static void printBlocks(ArrayList<Block> blocks) {
 		for (Block block : blocks) {
 			System.out.println(block);
@@ -39,4 +39,5 @@ public class BlockUtil {
 	}
 
 }
+
 

@@ -11,8 +11,6 @@ public class Report {
 		System.out.println("New Quilts");
 		for (Quilt quilt : quilts) {
 			System.out.println(quilt);
-			System.out.println("----------------------------------------------"
-					+ "--------------------------------------------\n\n");
 		}
 	}	
 }

@@ -1,8 +1,9 @@
 package ca.bcit.comp2613.quiltpad;
 
 import ca.bcit.comp2613.a00192788.util.BlockUtil;
-import ca.bcit.comp2613.a00192788.util.MakeQuilt;
 import ca.bcit.comp2613.a00192788.util.PieceUtil;
+import ca.bcit.comp2613.a00192788.util.QuiltComparator;
+import ca.bcit.comp2613.a00192788.util.QuiltUtil;
 import ca.bcit.comp2613.a00192788.util.except.IllegalLengthException;
 import ca.bcit.comp2613.a00192788.util.except.IllegalSizeException;
 import ca.bcit.comp2613.a00192788.util.report.Report;
@@ -11,6 +12,7 @@ import ca.bcit.comp2613.quiltpad.model.Piece;
 import ca.bcit.comp2613.quiltpad.model.Quilt;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 public class TestDriver {
@@ -32,8 +34,12 @@ public class TestDriver {
 				PieceUtil.printPieces(pieces);	
 				
 				// make quilt by merging blocks and pieces //
-				ArrayList<Quilt> quilt = MakeQuilt.mergeBlocks(blocks, pieces);
-				Report.printReport(quilt);
+				ArrayList<Quilt> quilts = QuiltUtil.mergeBlocks(blocks, pieces);
+				
+				// sort quilt list in descending block quantity, and
+				// then by ascending quilt id //
+				Collections.sort(quilts, new QuiltComparator());
+				Report.printReport(quilts);
 							
 				// randomly generate exception 20% of the time //
 				int randInt = rand.nextInt(100);
