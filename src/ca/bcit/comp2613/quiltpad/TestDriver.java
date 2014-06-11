@@ -36,8 +36,8 @@ public class TestDriver {
 				// make quilt by merging blocks and pieces //
 				ArrayList<Quilt> quilts = QuiltUtil.mergeBlocks(blocks, pieces);
 				
-				// sort quilt list in descending block quantity, and
-				// then by ascending quilt id //
+				// sort quilt list in ascending block quantity, and
+				// then by descending quilt id //
 				Collections.sort(quilts, new QuiltComparator());
 				Report.printReport(quilts);
 							
