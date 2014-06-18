@@ -4,17 +4,21 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.UUID;
 
+import org.apache.log4j.Logger;
+
 import ca.bcit.comp2613.quiltpad.model.Block;
 
 public class BlockUtil {
 	
 	private final static Integer MAX_QTY = 17;
 	private final static Integer MAX_OBJS = 100;
+	static Logger log = Logger.getLogger(BlockUtil.class);
 	
 	public static ArrayList<Block> createBlocks() {
 		ArrayList<Block> retblocks = new ArrayList<Block>();
 		Random rand = new Random();
-	
+		
+		log.info("Creating random blocks");
 		for (int i = 0; i < MAX_OBJS; i++) {
 			Block block = new Block();
 			

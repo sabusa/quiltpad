@@ -15,14 +15,24 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+
 public class TestDriver {
 	
 	public static void main(String[] args) {
+		// load logger //
+		PropertyConfigurator.configure(
+				TestDriver.class.getResourceAsStream("log4j.properties")
+				);
+		final Logger log = Logger.getLogger(TestDriver.class);
+		
 		Quilt quilt = new Quilt() {
 			
 			@Override
 			// anonymous inner class overriding method //
 			public void createQuilt() throws IllegalSizeException {
+				
 				Random rand = new Random();
 				
 				// make and print blocks //
@@ -44,13 +54,14 @@ public class TestDriver {
 				// randomly generate exception 20% of the time //
 				int randInt = rand.nextInt(100);
 				if (randInt %5 == 0) {
-					System.err.println("Generated 20% error");
+					log.error("ERROR", new Exception("Generated 20% error - IllegalLengthException"));
 					throw new IllegalLengthException();	
-				}
+									}
 				//  randomly generate exception 1% of the time //
 				if (randInt == 1) {
-						System.err.println("Generated 1% error");
-						throw new IllegalSizeException();			
+					log.error("ERROR", new Exception("Generated 1% error - IllegalSizeException"));
+					throw new IllegalSizeException();
+						
 				}		
 			}
 		};

@@ -8,16 +8,20 @@ import ca.bcit.comp2613.quiltpad.model.FabricValue;
 import java.util.ArrayList;
 import java.util.Random;
 
+import org.apache.log4j.Logger;
+
 public class PieceUtil {
 	private final static Integer MAX_LENGTH = 100;
 	private final static Integer MAX_HYP = 24;
 	private final static Integer MAX_OBJS = 100;	
+	static Logger log = Logger.getLogger(PieceUtil.class);
 	
 	public static ArrayList<Piece> createPieces() {
 		ArrayList<Piece> retpieces = new ArrayList<>();
 		Random rand = new Random();
 		ShapeType shape; 
-	
+		
+		log.info("Creating random pieces");
 		for (int i = 0; i < MAX_OBJS; i++) {
 			Piece piece = new Piece();
 			

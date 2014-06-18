@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 import ca.bcit.comp2613.quiltpad.model.Quilt;
 
-/****************************************************************
+/*
  * QuiltComparator.java
  * 
  * This class implements Comparator and overrides the compare method 
@@ -15,17 +15,17 @@ import ca.bcit.comp2613.quiltpad.model.Quilt;
  * @author Sandra Buchanan
  * @date June 2014
  *
- ****************************************************************/
+ */
 
 public class QuiltComparator implements Comparator<Quilt> {
 	
-	/**************************************************************
+	/*
 	 * compare 
 	 * Overridden method
 	 *
 	 * @param quilt1, quilt2 (2 Quilt objects)
 	 * @return result (int based on comparison)
-	 **************************************************************/
+	 */
 	@Override
 	public int compare(Quilt quilt1, Quilt quilt2) {
 		int result;
