@@ -32,10 +32,11 @@ public class PieceUtil {
 			piece.setbSideLength(0);
 			piece.setcSideLength(0);
 			
-			// set all properties of piece to random values //
+			// set all fields of piece to random values //
 			piece.setId(i+1);
 			piece.setsType(ShapeType.randomShape());
 			piece.setfValue(FabricValue.randomValue());
+			piece.setpQty(rand.nextInt(MAX_LENGTH));
 			piece.setPosition(null);
 			
 			// set random side lengths based on shape //

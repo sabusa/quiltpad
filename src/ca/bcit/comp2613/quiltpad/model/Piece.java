@@ -7,24 +7,27 @@ public class Piece {
 	private Integer id;
 	private ShapeType sType; 
 	private FabricValue fValue;
+	private Integer pQty;
 	private Point position;
 	private Integer vSideLength;   
 	private Integer hSideLength;
 	private Integer aSideLength;
 	private Integer bSideLength;
-	private Integer cSideLength;	
+	private Integer cSideLength;
+		
 	
 	public Piece() {
 		super();
 	}
 	
-	public Piece(Integer id, ShapeType sType, FabricValue fValue,
+	public Piece(Integer id, ShapeType sType, FabricValue fValue, Integer pQty,
 			Point position, Integer vSideLength, Integer hSideLength,
 			Integer aSideLength, Integer bSideLength, Integer cSideLength) {
 		super();
 		this.id = id;
 		this.sType = sType;
 		this.fValue = fValue;
+		this.pQty = pQty;
 		this.position = position;
 		this.vSideLength = vSideLength;
 		this.hSideLength = hSideLength;
@@ -50,6 +53,12 @@ public class Piece {
 	}
 	public void setfValue(FabricValue fValue) {
 		this.fValue = fValue;
+	}
+	public Integer getpQty() {
+		return pQty;
+	}
+	public void setpQty(Integer pQty) {
+		this.pQty = pQty;
 	}
 	public Point getPosition() {
 		return position;

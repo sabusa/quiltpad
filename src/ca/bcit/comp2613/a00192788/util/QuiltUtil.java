@@ -32,7 +32,7 @@ public class QuiltUtil {
 		// make quilt when number of pieces are even and vertical length is over 
 		// minsize as set in quilt properties file //
 		for (Block block : blocks) {
-			if (block.getUniquePieceQty() %2 == 0) {
+			if (block.getUniquePieces() %2 == 0) {
 				for (Piece piece : pieces) {
 					if (piece.getvSideLength() > propertiesConfiguration.getInt("minsize") ) {
 		
@@ -41,8 +41,8 @@ public class QuiltUtil {
 						// set quilt properties //
 						quilt.setId(i+1);
 						quilt.setBlkName(block.getName());
-						quilt.setBlkQty(block.getBlkQty());
-						quilt.setPieceQty(block.getUniquePieceQty());
+						quilt.setBlkQty(block.getBlkSize());
+						quilt.setPieceQty(block.getUniquePieces());
 						i++;
 						
 						newQuilt.add(quilt);

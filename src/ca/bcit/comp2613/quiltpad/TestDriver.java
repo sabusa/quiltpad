@@ -1,5 +1,6 @@
 package ca.bcit.comp2613.quiltpad;
 
+import ca.bcit.comp2613.a00192788.gui.BlockFrame;
 import ca.bcit.comp2613.a00192788.util.BlockUtil;
 import ca.bcit.comp2613.a00192788.util.PieceUtil;
 import ca.bcit.comp2613.a00192788.util.QuiltComparator;
@@ -11,12 +12,14 @@ import ca.bcit.comp2613.quiltpad.model.Block;
 import ca.bcit.comp2613.quiltpad.model.Piece;
 import ca.bcit.comp2613.quiltpad.model.Quilt;
 
+import java.awt.EventQueue;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+
 
 public class TestDriver {
 	
@@ -27,10 +30,10 @@ public class TestDriver {
 				);
 		final Logger log = Logger.getLogger(TestDriver.class);
 		
-		Quilt quilt = new Quilt() {
+	
+		
+	/*	//Quilt quilt = new Quilt() {
 			
-			@Override
-			// anonymous inner class overriding method //
 			public void createQuilt() throws IllegalSizeException {
 				
 				Random rand = new Random();
@@ -64,16 +67,25 @@ public class TestDriver {
 						
 				}		
 			}
-		};
+		};*/
 			
 		// main program //	
-		try {
-			quilt.createQuilt();		
-		}
-		catch (IllegalSizeException e) {
-			e.printStackTrace(); 
-		}	
-		
+		//try {
+			//quilt.createQuilt();		
+		//}
+		//catch (IllegalSizeException e) {
+		//	e.printStackTrace(); 
+		//}	
+//	}
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					new BlockFrame();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 	
 }

@@ -4,18 +4,20 @@ public class Block {
 
 	private Integer id;
 	private String name;
-	private Integer uniquePieceQty;
-	private Integer blkQty;	
+	private Integer blkSize;
+	private Integer uniquePieces;
+	
 	
 	public Block() {
 		super();
 	}
-	public Block(Integer id, String name, Integer uniquePieceQty, Integer blkSize) {
+	public Block(Integer id, String name, Integer blkSize, Integer uniquePieces) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.uniquePieceQty = uniquePieceQty;
-		this.blkQty = blkSize;
+		this.blkSize = blkSize;
+		this.uniquePieces = uniquePieces;
+	
 	}
 	public Integer getId() {
 		return id;
@@ -29,22 +31,23 @@ public class Block {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Integer getUniquePieceQty() {
-		return uniquePieceQty;
+	public Integer getBlkSize() {
+		return blkSize;
 	}
-	public void setUniquePieceQty(Integer uniquePieceQty) {
-		this.uniquePieceQty = uniquePieceQty;
+	public void setBlkSize(Integer size) {
+		this.blkSize = size;
 	}
-	public Integer getBlkQty() {
-		return blkQty;
+	public Integer getUniquePieces() {
+		return uniquePieces;
 	}
-	public void setBlkQty(Integer blkQty) {
-		this.blkQty = blkQty;
+	public void setUniquePieces(Integer uniquePieces) {
+		this.uniquePieces = uniquePieces;
 	}
+
 	@Override
 	public String toString() {
-		return "Block [Id = " + id + ", Name = " + name + ", Unique Piece Quantity ="
-				+ uniquePieceQty + ", Block Quantity = " + blkQty + "]";
+		return "Block [Id = " + id + ", Name = " + name + ", Size = " +
+				blkSize + "Unique Pieces = "+ uniquePieces + "]";
 	}
 	
 

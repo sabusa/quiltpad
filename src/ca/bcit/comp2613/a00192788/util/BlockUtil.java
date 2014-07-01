@@ -24,8 +24,8 @@ public class BlockUtil {
 			
 			// set all int properties of piece to random values //
 			block.setId(i+1);
-			block.setBlkQty(rand.nextInt(MAX_QTY) + 1);
-			block.setUniquePieceQty(rand.nextInt(MAX_OBJS) + 1);
+			block.setBlkSize(rand.nextInt(MAX_QTY) + 1);
+			block.setUniquePieces(rand.nextInt(MAX_OBJS) + 1);
 			
 			// set name to a random value //
 			String randName = UUID.randomUUID().toString();
