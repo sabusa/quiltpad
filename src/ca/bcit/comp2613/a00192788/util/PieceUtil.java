@@ -14,16 +14,21 @@ public class PieceUtil {
 	private final static Integer MAX_LENGTH = 100;
 	private final static Integer MAX_HYP = 24;
 	private final static Integer MAX_OBJS = 100;	
+	
 	static Logger log = Logger.getLogger(PieceUtil.class);
 	
 	public static ArrayList<Piece> createPieces() {
 		ArrayList<Piece> retpieces = new ArrayList<>();
 		Random rand = new Random();
-		ShapeType shape; 
+		ShapeType shape;
+		String blkName = "new block";
 		
 		log.info("Creating random pieces");
 		for (int i = 0; i < MAX_OBJS; i++) {
 			Piece piece = new Piece();
+			
+			// set block name 
+			piece.setBlkName(blkName);
 			
 			// initialize all side lengths to 0 //
 			piece.setvSideLength(0);
@@ -84,6 +89,18 @@ public class PieceUtil {
 				System.out.println(piece);
 			}	
 		}
+	}
+	
+	public static ArrayList<Piece> findPieces(ArrayList<Piece> pieces, String name) {
+		
+		ArrayList<Piece> retpieces = new ArrayList<Piece>();
+		
+		for (Piece piece : pieces) {
+			if (name.compareTo(piece.getBlkName()) == 0) {
+				retpieces.add(piece);
+			}
+		}	
+		return retpieces;
 	}
 }
 

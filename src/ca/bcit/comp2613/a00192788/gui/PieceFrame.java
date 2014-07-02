@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JTable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.ListSelectionModel;
@@ -24,28 +25,36 @@ import java.awt.FlowLayout;
 @SuppressWarnings("serial")
 public class PieceFrame extends JFrame {
 	
+	private final int WIDTH = 600;
+	private final int HEIGHT = 525;
 	private JFrame frmPieces;
 	private JScrollPane scrollPane;
 	private JTable pTable;
 	private NonEditableDefaultTableModel pTableModel;
 	public String[] columnNames = new String[] { "Id", "Type", "Value", "Quantity" };
-	public static List<Piece> pieces;
+	public static ArrayList<Piece> pieces;
+	private ArrayList<Piece> blkPieces;
 	//private JButton btnNew;
 	//private JButton btnList;
 	//private JButton btnShow;
-	private ButtonGroup buttonGroup;
+	//private ButtonGroup buttonGroup;
 	private JTextField idTextField;
 	private JTextField typeTextField;
 	private JTextField valueTextField;
 	private JTextField pQtyTextField;
 		
 		
-	public PieceFrame() {
-		pieces = PieceUtil.createPieces();
-			initialize();
-			initTable();		
-	}
+	/*public PieceFrame(String name) {
+		blkPieces = PieceUtil.findPieces(pieces, name);
+		initialize();
+		initTable();		
+	}*/
 			
+	public PieceFrame() {
+		blkPieces = PieceUtil.createPieces();
+		initialize();
+		initTable();		
+	}
 	private void initTable() {
 
 		pTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -76,20 +85,20 @@ public class PieceFrame extends JFrame {
 	}
 
 	private void refreshTable() {
-				
+		
 		Object[][] pData = null;
+		pData = new Object[blkPieces.size()][4];
 
-		pData = new Object[pieces.size()][4];
-			int i = 0;
-			for (Piece piece : pieces) {
-				pData[i][0] = piece.getId();
-				pData[i][1] = piece.getsType();
-				pData[i][2] = piece.getfValue();
-				pData[i][3] = piece.getpQty();
-				i++;
-			}
-			pTableModel.setDataVector(pData, columnNames);
-			pTable.repaint();
+		int i = 0;
+		for (Piece piece : blkPieces) {
+			pData[i][0] = piece.getId();
+			pData[i][1] = piece.getsType();
+			pData[i][2] = piece.getfValue();
+			pData[i][3] = piece.getpQty();
+			i++;
+		}
+		pTableModel.setDataVector(pData, columnNames);
+		pTable.repaint();
 	}
 			
 	/**
@@ -98,7 +107,7 @@ public class PieceFrame extends JFrame {
 	private void initialize() {
 		frmPieces = new JFrame();
 		frmPieces.setTitle("Pieces");
-		frmPieces.setBounds(100, 100, 601, 521);
+		frmPieces.setBounds(100, 100, WIDTH, HEIGHT);
 		frmPieces.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmPieces.setVisible(true);
 				

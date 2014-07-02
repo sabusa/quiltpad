@@ -4,6 +4,7 @@ import java.awt.Point;
 
 public class Piece {
 	
+	private String blkName;
 	private Integer id;
 	private ShapeType sType; 
 	private FabricValue fValue;
@@ -20,10 +21,11 @@ public class Piece {
 		super();
 	}
 	
-	public Piece(Integer id, ShapeType sType, FabricValue fValue, Integer pQty,
-			Point position, Integer vSideLength, Integer hSideLength,
+	public Piece(Integer id, ShapeType sType, FabricValue fValue, 
+			Integer pQty, Point position, Integer vSideLength, Integer hSideLength,
 			Integer aSideLength, Integer bSideLength, Integer cSideLength) {
 		super();
+	//	this.blkName = blkName;
 		this.id = id;
 		this.sType = sType;
 		this.fValue = fValue;
@@ -35,7 +37,13 @@ public class Piece {
 		this.bSideLength = bSideLength;
 		this.cSideLength = cSideLength;
 	}
-	
+		
+	public String getBlkName() {
+		return blkName;
+	}
+	public void setBlkName(String blkName) {
+		this.blkName = blkName;
+	}
 	public Integer getId() {
 		return id;
 	}
@@ -99,11 +107,12 @@ public class Piece {
 
 	@Override
 	public String toString() {
-		return "Piece [Id = " + id + ", Type=" + sType + ", Fabric Value = " + fValue
-				+ ", Position = " + position + ", Vertical Length = " + vSideLength
-				+ ", Horizontal Length = " + hSideLength + ", A Side Length = "
-				+ aSideLength + ", B Side Length = " + bSideLength
-				+ ", C Side Length = " + cSideLength + "]";
+		return "Block Name = " + blkName + ", Id = " + id + ", Type=" + sType 
+				+ ", Fabric Value = " + fValue + ", Position = " + position 
+				+ ", Vertical Length = " + vSideLength + ", Horizontal Length = "
+				+ hSideLength + ", A Side Length = " + aSideLength 
+				+ ", B Side Length = " + bSideLength + ", C Side Length = " 
+				+ cSideLength ;
 	}
 	
 	

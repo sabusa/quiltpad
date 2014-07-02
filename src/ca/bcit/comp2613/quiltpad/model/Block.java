@@ -12,7 +12,7 @@ public class Block {
 		super();
 	}
 	public Block(Integer id, String name, Integer blkSize, Integer uniquePieces) {
-		super();
+		//super();
 		this.id = id;
 		this.name = name;
 		this.blkSize = blkSize;

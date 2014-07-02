@@ -1,6 +1,7 @@
 package ca.bcit.comp2613.a00192788.util;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
 import java.util.UUID;
 
@@ -40,6 +41,17 @@ public class BlockUtil {
 		for (Block block : blocks) {
 			System.out.println(block);
 		}		
+	}
+	
+	public static void delete(ArrayList<Block> blocks, Block block) {
+		Iterator<Block> iter = blocks.iterator();
+		while (iter.hasNext()) {
+			Block blockLoop = iter.next();
+			if (blockLoop.getId().equals(block.getId())) {
+				iter.remove();
+				break;
+			}
+		}
 	}
 
 }
