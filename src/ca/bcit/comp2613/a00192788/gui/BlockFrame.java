@@ -1,6 +1,7 @@
 package ca.bcit.comp2613.a00192788.gui;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -9,17 +10,15 @@ import javax.swing.ButtonGroup;
 import javax.swing.JTable;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
 
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import net.miginfocom.swing.MigLayout;
 import ca.bcit.comp2613.a00192788.util.BlockUtil;
 import ca.bcit.comp2613.quiltpad.model.Block;
 
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -40,10 +39,13 @@ public class BlockFrame extends JFrame {
 	private JButton btnShow;
 	private JButton btnDelete;
 	private ButtonGroup buttonGroup;
-//	private JTextField idTextField;
-//	private JTextField nameTextField;
-//	private JTextField sizeTextField;
-//	private JTextField uniquePiecesTextField;
+	private JTextField nameTextField; 
+	private JTextField sizeTextField;
+	private JTextField uniquePiecesTextField;
+	private JLabel lblName;
+	private JLabel lblSize;
+	private JLabel lblUPieces;
+
 	
 	
 	public BlockFrame() {
@@ -55,7 +57,7 @@ public class BlockFrame extends JFrame {
 	private void initTable() {
 
 		blkTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		/*blkTable.getSelectionModel().addListSelectionListener(
+		blkTable.getSelectionModel().addListSelectionListener(
 				new ListSelectionListener() {
 
 					@Override
@@ -64,15 +66,12 @@ public class BlockFrame extends JFrame {
 							populateTable();
 						}
 					}
-				});
-		*/		
+				});		
 		refreshTable();
 	}
 		
-	/*private void populateTable() {
+	private void populateTable() {
 		try {
-			idTextField.setText(blkTable.getModel()
-					.getValueAt(blkTable.getSelectedRow(), 0).toString());
 			nameTextField.setText(blkTable.getModel()
 					.getValueAt(blkTable.getSelectedRow(), 1).toString());
 			sizeTextField.setText(blkTable.getModel()
@@ -80,7 +79,7 @@ public class BlockFrame extends JFrame {
 			uniquePiecesTextField.setText(blkTable.getModel()
 					.getValueAt(blkTable.getSelectedRow(), 3).toString());
 		} catch (Exception e) {}
-	}*/
+	}
 
 	public void listPieces() {
 		//String id = idTextField.getText();
@@ -125,44 +124,60 @@ public class BlockFrame extends JFrame {
 		frmBlocks.setVisible(true);
 			
 		blkTableModel = new NonEditableDefaultTableModel();
-		frmBlocks.getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 100, 5
-				));
-
+		frmBlocks.getContentPane().setLayout(new MigLayout("", "[][grow][][]", "[][][][][251.00][10][][5][][5][][]"));
+			
 		blkTable = new JTable(blkTableModel);
 		scrollPane = new JScrollPane(blkTable);
-		frmBlocks.getContentPane().add(scrollPane);
-			
-		//btnNew = new JButton("New Block");
+		frmBlocks.getContentPane().add(scrollPane, "cell 1 0 6 5");
 		
+		buttonGroup = new ButtonGroup();
+		
+		btnNew = new JButton("New Block");
+		buttonGroup.add(btnNew);
+		frmBlocks.getContentPane().add(btnNew, "cell 0 0,growx");
+			
 		btnList = new JButton("List Pieces");
+		buttonGroup.add(btnList);	
 		btnList.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				listPieces();
 			}
 		});
-		
+		frmBlocks.getContentPane().add(btnList, "cell 0 1");
+			
 		btnShow = new JButton("Show ");
-		
+		buttonGroup.add(btnShow);
+		frmBlocks.getContentPane().add(btnShow, "cell 0 2,growx");
+			
 		btnDelete = new JButton("Delete");
+		buttonGroup.add(btnDelete);	
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				 int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete the log? ", "Log", JOptionPane.YES_NO_OPTION );
-                 if (confirm == JOptionPane.YES_OPTION){ 
-                	 deleteBlock();
-                 }
+				int confirm = JOptionPane.showConfirmDialog(null, "Are you sure "
+						+ "you want to delete this block? ", "Block", 
+						JOptionPane.YES_NO_OPTION );
+	            if (confirm == JOptionPane.YES_OPTION){ 
+	            	deleteBlock();
+	            }
 			}
 		});
+		frmBlocks.getContentPane().add(btnDelete, "cell 0 3,growx");
 		
-		buttonGroup = new ButtonGroup();
+		lblName = new JLabel("Block Name");
+		frmBlocks.getContentPane().add(lblName, "cell 0 6,alignx trailing");
+		nameTextField = new JTextField();
+		frmBlocks.getContentPane().add(nameTextField, "cell 1 6,growx");
 		
-		//buttonGroup.add(btnNew);
-		buttonGroup.add(btnList);
-		buttonGroup.add(btnShow);
-		buttonGroup.add(btnDelete);	
+		lblSize = new JLabel("Size");
+		frmBlocks.getContentPane().add(lblSize, "cell 0 8,alignx trailing");
+		sizeTextField = new JTextField();
+		frmBlocks.getContentPane().add(sizeTextField, "cell 1 8,growx");
 		
-		//frmBlocks.getContentPane().add(btnNew);
-		frmBlocks.getContentPane().add(btnList);
-		frmBlocks.getContentPane().add(btnShow);
-		frmBlocks.getContentPane().add(btnDelete);
+		lblUPieces = new JLabel("Unique Pieces");
+		frmBlocks.getContentPane().add(lblUPieces, "cell 0 10,alignx trailing");
+		
+		uniquePiecesTextField = new JTextField();
+		frmBlocks.getContentPane().add(uniquePiecesTextField, "cell 1 10,growx");
 	}
+
 }
