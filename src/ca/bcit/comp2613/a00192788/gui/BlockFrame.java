@@ -41,10 +41,10 @@ public class BlockFrame extends JFrame {
 	private JTextField nameTextField; 
 	private JTextField sizeTextField;
 	private JTextField uniquePiecesTextField;
-	private JLabel lblName;
-	private JLabel lblSize;
 	private JLabel lblUPieces;
 	private JButton button;
+	private JLabel label;
+	private JLabel label_1;
 
 	
 	
@@ -88,13 +88,16 @@ public class BlockFrame extends JFrame {
 	}
 	
 	public void deleteBlock() {
-		
-		int row = blkTable.getSelectedRow();
-		Integer id = (Integer) blkTable.getValueAt(row, 0);
-		System.out.println(id);
-		Block block = new Block(id, null, null, null);
-		BlockUtil.delete(blocks, block);
-		refreshTable();
+		int response = JOptionPane.showConfirmDialog(null, "Do you really want to delete this block?", "Confirm",
+		JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+		if (response == JOptionPane.YES_OPTION) {
+			// Delete specified block
+			int row = blkTable.getSelectedRow();
+			Integer id = (Integer) blkTable.getValueAt(row, 0);
+			Block block = new Block(id, null, null, null);
+			BlockUtil.delete(blocks, block);
+			refreshTable();
+		}
 	}
 	
 	private void refreshTable() {
@@ -124,11 +127,11 @@ public class BlockFrame extends JFrame {
 		frmBlocks.setVisible(true);
 			
 		blkTableModel = new NonEditableDefaultTableModel();
-		frmBlocks.getContentPane().setLayout(new MigLayout("", "[][]", "[][][][][][][][][][][][]"));
+		frmBlocks.getContentPane().setLayout(new MigLayout("", "[][83.00][79.00][182.00][148.00]", "[][][][][][][][][][][][]"));
 			
 		blkTable = new JTable(blkTableModel);
 		scrollPane = new JScrollPane(blkTable);
-		frmBlocks.getContentPane().add(scrollPane, "cell 1 0 6 6");
+		frmBlocks.getContentPane().add(scrollPane, "cell 1 0 7 6");
 		
 		buttonGroup = new ButtonGroup();
 		
@@ -152,24 +155,25 @@ public class BlockFrame extends JFrame {
 		button = new JButton("Delete");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				deleteBlock();
 			}
 		});
 		frmBlocks.getContentPane().add(button, "cell 0 3, growx");
 		
-		lblName = new JLabel("Block Name");
-		frmBlocks.getContentPane().add(lblName, "cell 0 7,alignx trailing");
+		label = new JLabel("Block Name");
+		frmBlocks.getContentPane().add(label, "cell 1 7,alignx trailing");
 		nameTextField = new JTextField();
-		frmBlocks.getContentPane().add(nameTextField, "cell 1 7,growx");
+		frmBlocks.getContentPane().add(nameTextField, "cell 2 7 2 1,growx");
 		
-		lblSize = new JLabel("Size");
-		frmBlocks.getContentPane().add(lblSize, "cell 0 9,alignx trailing");
+		label_1 = new JLabel("Size");
+		frmBlocks.getContentPane().add(label_1, "cell 1 9,alignx trailing");
 		sizeTextField = new JTextField();
-		frmBlocks.getContentPane().add(sizeTextField, "cell 1 9,growx");
+		frmBlocks.getContentPane().add(sizeTextField, "cell 2 9,growx");
 		
 		lblUPieces = new JLabel("Unique Pieces");
-		frmBlocks.getContentPane().add(lblUPieces, "cell 0 11,alignx trailing");
+		frmBlocks.getContentPane().add(lblUPieces, "cell 1 11,alignx trailing");
 		uniquePiecesTextField = new JTextField();
-		frmBlocks.getContentPane().add(uniquePiecesTextField, "cell 1 11,growx");
+		frmBlocks.getContentPane().add(uniquePiecesTextField, "cell 2 11,growx");
 	}
 
 }
