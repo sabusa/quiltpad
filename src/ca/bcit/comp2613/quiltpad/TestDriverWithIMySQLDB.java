@@ -1,6 +1,7 @@
 package ca.bcit.comp2613.quiltpad;
 
 
+import org.apache.log4j.PropertyConfigurator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -13,6 +14,9 @@ import ca.bcit.comp2613.quiltpad.repository.BlockRepository;
 @ImportResource("applicationContext.xml")
 public class TestDriverWithIMySQLDB {
 	public static void main(String[] args) {
+		PropertyConfigurator.configure(
+				TestDriverWithIMySQLDB.class.getResourceAsStream("log4j.properties")
+				);
 		ConfigurableApplicationContext context = SpringApplication.run(TestDriverWithIMySQLDB.class); 
 		
 		BlockRepository blockRepository = context.getBean(BlockRepository.class);

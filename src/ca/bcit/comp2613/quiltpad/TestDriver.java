@@ -11,6 +11,7 @@ import ca.bcit.comp2613.a00192788.util.report.Report;
 import ca.bcit.comp2613.quiltpad.model.Block;
 import ca.bcit.comp2613.quiltpad.model.Piece;
 import ca.bcit.comp2613.quiltpad.model.Quilt;
+import ca.bcit.comp2613.quiltpad.repository.BlockRepository;
 
 import java.awt.EventQueue;
 import java.util.ArrayList;
@@ -19,18 +20,22 @@ import java.util.Random;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
-
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.ImportResource;
 
 public class TestDriver {
 	
 	public static void main(String[] args) {
+
 		// load logger //
 		PropertyConfigurator.configure(
 				TestDriver.class.getResourceAsStream("log4j.properties")
 				);
 		final Logger log = Logger.getLogger(TestDriver.class);
+				
 		
-	
 		
 	/*	//Quilt quilt = new Quilt() {
 			

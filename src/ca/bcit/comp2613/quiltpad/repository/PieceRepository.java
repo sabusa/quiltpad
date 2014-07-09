@@ -8,6 +8,6 @@ import ca.bcit.comp2613.quiltpad.model.Piece;
 
 public interface PieceRepository extends CrudRepository<Piece, Integer> {
 
-	@Query("select b from Piece where b.blkName = :blkName")
+	@Query("select b from Piece b where b.blkName = :blkName")
 	Piece findByBlkName(@Param("blkName") String blkName);
 }
