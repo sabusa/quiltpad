@@ -1,32 +1,26 @@
 package ca.bcit.comp2613.a00192788.gui;
 	
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.ButtonGroup;
 import javax.swing.JTable;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import ca.bcit.comp2613.a00192788.util.BlockUtil;
 import ca.bcit.comp2613.a00192788.util.PieceUtil;
-import ca.bcit.comp2613.quiltpad.model.Block;
 import ca.bcit.comp2613.quiltpad.model.Piece;
-
-import java.awt.FlowLayout;
 
 
 @SuppressWarnings("serial")
 public class PieceFrame extends JFrame {
 	
 	private final int WIDTH = 600;
-	private final int HEIGHT = 525;
+	private final int HEIGHT = 600;
 	private JFrame frmPieces;
 	private JScrollPane scrollPane;
 	private JTable pTable;
@@ -34,15 +28,12 @@ public class PieceFrame extends JFrame {
 	public String[] columnNames = new String[] { "Id", "Type", "Value", "Quantity" };
 	public static ArrayList<Piece> pieces;
 	private ArrayList<Piece> blkPieces;
-	//private JButton btnNew;
-	//private JButton btnList;
-	//private JButton btnShow;
-	//private ButtonGroup buttonGroup;
-	private JTextField idTextField;
 	private JTextField typeTextField;
 	private JTextField valueTextField;
 	private JTextField pQtyTextField;
-		
+	private JLabel lblType;
+	private JLabel lblValue; 
+	private JLabel lblpQty;
 		
 	/*public PieceFrame(String name) {
 		blkPieces = PieceUtil.findPieces(pieces, name);
@@ -73,8 +64,6 @@ public class PieceFrame extends JFrame {
 			
 	private void populateTable() {
 		try {
-			idTextField.setText(pTable.getModel()
-				.getValueAt(pTable.getSelectedRow(), 0).toString());
 			typeTextField.setText(pTable.getModel()
 				.getValueAt(pTable.getSelectedRow(), 1).toString());
 			valueTextField.setText(pTable.getModel()
@@ -112,23 +101,36 @@ public class PieceFrame extends JFrame {
 		frmPieces.setVisible(true);
 				
 		pTableModel = new NonEditableDefaultTableModel();
-		frmPieces.getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 100, 10));
+		frmPieces.getContentPane().setLayout(null);
 
 		pTable = new JTable(pTableModel);
 		scrollPane = new JScrollPane(pTable);
+		scrollPane.setBounds(45,20,500,390);
 		frmPieces.getContentPane().add(scrollPane);
 				
-		//btnNew = new JButton("New Block");
-		//btnList = new JButton("List Pieces");
-		//btnShow = new JButton("Show ");
-		//buttonGroup = new ButtonGroup();
-		//buttonGroup.add(btnNew);
-		//buttonGroup.add(btnList);
-		//buttonGroup.add(btnShow);
-				
-		//frmPieces.getContentPane().add(btnNew);
-		//frmPieces.getContentPane().add(btnList);
-		//frmPieces.getContentPane().add(btnShow);
+		lblType = new JLabel("Type");
+		lblType.setBounds(100,430,100,25);
+		frmPieces.getContentPane().add(lblType);
+		typeTextField = new JTextField();
+		typeTextField.setBounds(165,430,150,25);
+		typeTextField.setColumns(20);
+		frmPieces.getContentPane().add(typeTextField);
+		
+		lblValue = new JLabel("Value");
+		lblValue.setBounds(100,470,100,25);
+		frmPieces.getContentPane().add(lblValue);
+		valueTextField = new JTextField();
+		valueTextField.setBounds(165,470,150,25);
+		valueTextField.setColumns(15);
+		frmPieces.getContentPane().add(valueTextField);
+		
+		lblpQty = new JLabel("Quantity");
+		lblpQty.setBounds(100,510,120,25);
+		frmPieces.getContentPane().add(lblpQty);
+		pQtyTextField = new JTextField();
+		pQtyTextField.setBounds(165,510,80,25);
+		pQtyTextField.setColumns(7);
+		frmPieces.getContentPane().add(pQtyTextField);
 	}
 	
 }

@@ -1,5 +1,6 @@
 package ca.bcit.comp2613.quiltpad.model;
 
+
 public class Block {
 
 	private Integer id;

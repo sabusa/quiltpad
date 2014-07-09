@@ -21,6 +21,7 @@ import ca.bcit.comp2613.quiltpad.model.Block;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.SwingConstants;
 
 
 @SuppressWarnings("serial")
@@ -37,15 +38,14 @@ public class BlockFrame extends JFrame {
 	private JButton btnNew;
 	private JButton btnList;
 	private JButton btnShow;
+	private JButton btnDelete;
 	private ButtonGroup buttonGroup;
 	private JTextField nameTextField; 
 	private JTextField sizeTextField;
 	private JTextField uniquePiecesTextField;
+	private JLabel lblName;
+	private JLabel lblSize;
 	private JLabel lblUPieces;
-	private JButton button;
-	private JLabel label;
-	private JLabel label_1;
-
 	
 	
 	public BlockFrame() {
@@ -127,7 +127,7 @@ public class BlockFrame extends JFrame {
 		frmBlocks.setVisible(true);
 			
 		blkTableModel = new NonEditableDefaultTableModel();
-		frmBlocks.getContentPane().setLayout(new MigLayout("", "[][83.00][79.00][182.00][148.00]", "[][][][][][][][][][][][]"));
+		frmBlocks.getContentPane().setLayout(new MigLayout("", "[][83.00][79.00][182.00][148.00]", "[][][][][][][][25.00][][25][][25.00]"));
 			
 		blkTable = new JTable(blkTableModel);
 		scrollPane = new JScrollPane(blkTable);
@@ -152,21 +152,21 @@ public class BlockFrame extends JFrame {
 		buttonGroup.add(btnShow);
 		frmBlocks.getContentPane().add(btnShow, "cell 0 2, growx");
 		
-		button = new JButton("Delete");
-		button.addActionListener(new ActionListener() {
+		btnDelete = new JButton("Delete");
+		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				deleteBlock();
 			}
 		});
-		frmBlocks.getContentPane().add(button, "cell 0 3, growx");
+		frmBlocks.getContentPane().add(btnDelete, "cell 0 3, growx");
 		
-		label = new JLabel("Block Name");
-		frmBlocks.getContentPane().add(label, "cell 1 7,alignx trailing");
+		lblName = new JLabel("Block Name");
+		frmBlocks.getContentPane().add(lblName, "cell 1 7,alignx trailing");
 		nameTextField = new JTextField();
 		frmBlocks.getContentPane().add(nameTextField, "cell 2 7 2 1,growx");
 		
-		label_1 = new JLabel("Size");
-		frmBlocks.getContentPane().add(label_1, "cell 1 9,alignx trailing");
+		lblSize = new JLabel("Size");
+		frmBlocks.getContentPane().add(lblSize, "cell 1 9,alignx trailing");
 		sizeTextField = new JTextField();
 		frmBlocks.getContentPane().add(sizeTextField, "cell 2 9,growx");
 		
