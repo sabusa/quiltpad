@@ -37,7 +37,7 @@
 	<bean id="persistenceAnnotation"
 		class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
 	
-	<jpa:repositories base-package="ca.bcit.comp2613.a00192788.repository" />
+	<jpa:repositories base-package="ca.bcit.comp2613.quiltpad.repository" />
  -->
 
 	<bean id="dataSource"

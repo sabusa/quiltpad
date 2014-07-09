@@ -1,7 +1,8 @@
 package ca.bcit.comp2613.quiltpad.repository;
 
-import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
@@ -26,8 +27,8 @@ public class CustomQueryHelper {
 	}
 
 	@SuppressWarnings("unchecked")
-	public ArrayList<Piece> getPiecesOfBlockWithNativeQuery(Integer blockId) {
-		ArrayList<Piece> retval = null;
+	public List<Piece> getPiecesOfBlockWithNativeQuery(Integer blockId) {
+		List<Piece> retval = null;
 		EntityManager em = null;
 		try {
 			em = emf.createEntityManager();
@@ -42,7 +43,7 @@ public class CustomQueryHelper {
 									+ "            on block_piece.piece_id = piece.id where block_piece.block_id = :block_id",
 							Piece.class);
 			query.setParameter("block_id", blockId);
-			retval = (ArrayList<Piece>) query.getResultList();
+			retval = query.getResultList();
 		} catch (Exception e) {
 
 		} finally {
@@ -55,8 +56,8 @@ public class CustomQueryHelper {
 	}
 	
 	
-	public ArrayList<Piece> getPiecesOfBlock(Integer blockId) {
-		ArrayList<Piece> retval = null;
+	public List<Piece> getPiecesOfBlock(Integer blockId) {
+		List<Piece> retval = null;
 		EntityManager em = null;
 		try {
 			em = emf.createEntityManager();
