@@ -1,14 +1,30 @@
 package ca.bcit.comp2613.quiltpad.model;
 
+import java.util.ArrayList;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+
+
+@Entity
 public class Block {
 
+	@Id
 	private Integer id;
 	private String name;
 	private Integer blkSize;
 	private Integer uniquePieces;
 	
-	
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "block_piece",
+	joinColumns = { @JoinColumn(name = "block_id") }, inverseJoinColumns = { @JoinColumn(name = "piece_id") })
+	private ArrayList<Piece> pieces;
+		
+		
 	public Block() {
 		super();
 	}
@@ -44,7 +60,12 @@ public class Block {
 	public void setUniquePieces(Integer uniquePieces) {
 		this.uniquePieces = uniquePieces;
 	}
-
+	public ArrayList<Piece> getPieces() {
+		return pieces;
+	}
+	public void setPieces(ArrayList<Piece> pieces) {
+		this.pieces = pieces;
+	}
 	@Override
 	public String toString() {
 		return "Block [Id = " + id + ", Name = " + name + ", Size = " +

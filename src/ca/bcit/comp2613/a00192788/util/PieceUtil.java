@@ -1,6 +1,7 @@
 package ca.bcit.comp2613.a00192788.util;
 
 import ca.bcit.comp2613.a00192788.util.except.IllegalSizeException;
+import ca.bcit.comp2613.quiltpad.model.Block;
 import ca.bcit.comp2613.quiltpad.model.Piece;
 import ca.bcit.comp2613.quiltpad.model.ShapeType;
 import ca.bcit.comp2613.quiltpad.model.FabricValue;
@@ -38,7 +39,6 @@ public class PieceUtil {
 			piece.setcSideLength(0);
 			
 			// set all fields of piece to random values //
-			piece.setId(i+1);
 			piece.setsType(ShapeType.randomShape());
 			piece.setfValue(FabricValue.randomValue());
 			piece.setpQty(rand.nextInt(MAX_LENGTH));
@@ -101,6 +101,24 @@ public class PieceUtil {
 			}
 		}	
 		return retpieces;
+	}
+	
+	public static void createMappingOfPiecesToBlocks(ArrayList<Block> blocks, ArrayList<Piece> pieces) {
+		int blockSize = blocks.size();
+		int pieceSize = pieces.size();
+		
+		for (int i = 0; i < blockSize; i++) {
+			Block block = blocks.get(i);
+			for (int y = 0; y < 5; y++) {
+				Random rand = new Random();
+				int randIndexOfPiece = rand.nextInt(pieceSize);
+				if (block.getPieces() == null) {
+					block.setPieces(new ArrayList<Piece>());
+				}
+				block.getPieces().add(pieces.get(randIndexOfPiece));
+			}
+		}
+		
 	}
 }
 

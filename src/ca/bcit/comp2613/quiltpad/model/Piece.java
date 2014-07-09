@@ -1,11 +1,25 @@
 package ca.bcit.comp2613.quiltpad.model;
 
 import java.awt.Point;
+import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+
+
+@Entity
 public class Piece {
 	
-	private String blkName;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO) // database generated id
 	private Integer id;
+	private String blkName;
 	private ShapeType sType; 
 	private FabricValue fValue;
 	private Integer pQty;
@@ -15,7 +29,12 @@ public class Piece {
 	private Integer aSideLength;
 	private Integer bSideLength;
 	private Integer cSideLength;
-		
+	
+	@ManyToMany(cascade=CascadeType.ALL)
+	@JoinTable(name = "teacher_student",
+	joinColumns = { @JoinColumn(name = "piece_id") }, inverseJoinColumns = { @JoinColumn(name = "block_id") })
+	private List<Block> blocks;
+	
 	
 	public Piece() {
 		super();
@@ -37,72 +56,87 @@ public class Piece {
 		this.bSideLength = bSideLength;
 		this.cSideLength = cSideLength;
 	}
-		
+	
+	
+	public Integer getId() {
+		return id;
+	}
+
 	public String getBlkName() {
 		return blkName;
 	}
 	public void setBlkName(String blkName) {
 		this.blkName = blkName;
 	}
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
+	
 	public ShapeType getsType() {
 		return sType;
 	}
 	public void setsType(ShapeType sType) {
 		this.sType = sType;
 	}
+	
 	public FabricValue getfValue() {
 		return fValue;
 	}
 	public void setfValue(FabricValue fValue) {
 		this.fValue = fValue;
 	}
+	
 	public Integer getpQty() {
 		return pQty;
 	}
 	public void setpQty(Integer pQty) {
 		this.pQty = pQty;
 	}
+	
 	public Point getPosition() {
 		return position;
 	}
 	public void setPosition(Point position) {
 		this.position = position;
 	}
+	
 	public Integer getvSideLength() {
 		return vSideLength;
 	}
 	public void setvSideLength(Integer vSideLength) {
 		this.vSideLength = vSideLength;
 	}
+	
 	public Integer gethSideLength() {
 		return hSideLength;
 	}
 	public void sethSideLength(Integer hSideLength) {
 		this.hSideLength = hSideLength;
 	}
+	
 	public Integer getaSideLength() {
 		return aSideLength;
 	}
 	public void setaSideLength(Integer aSideLength) {
 		this.aSideLength = aSideLength;
 	}
+	
 	public Integer getbSideLength() {
 		return bSideLength;
 	}
 	public void setbSideLength(Integer bSideLength) {
 		this.bSideLength = bSideLength;
 	}
+	
 	public Integer getcSideLength() {
 		return cSideLength;
 	}
 	public void setcSideLength(Integer cSideLength) {
 		this.cSideLength = cSideLength;
+	}
+	
+	public List<Block> getBlocks() {
+		return blocks;
+	}
+	public void setBlocks(List<Block> blocks) {
+		this.blocks = blocks;
 	}
 
 	@Override
