@@ -1,3 +1,9 @@
+July 9, 2014
+	- BlockRepository and PieceRepository created and added
+	- CustomQueryHelper created and added
+	- Connected to database in sql3.freemysqlhosting.net/sql346160
+	- ORM added
+
 Jun 30, 2014
 	- Block Class: added block size field (blkSize) and removed block 
 		quantity field (blkQty)

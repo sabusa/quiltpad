@@ -8,17 +8,20 @@ import ca.bcit.comp2613.a00192788.util.QuiltUtil;
 import ca.bcit.comp2613.a00192788.util.except.IllegalLengthException;
 import ca.bcit.comp2613.a00192788.util.except.IllegalSizeException;
 import ca.bcit.comp2613.a00192788.util.report.Report;
-
 import ca.bcit.comp2613.quiltpad.model.Block;
 import ca.bcit.comp2613.quiltpad.model.Piece;
 import ca.bcit.comp2613.quiltpad.model.Quilt;
 import ca.bcit.comp2613.quiltpad.repository.BlockRepository;
+import ca.bcit.comp2613.quiltpad.repository.CustomQueryHelper;
 import ca.bcit.comp2613.quiltpad.repository.PieceRepository;
 
 import java.awt.EventQueue;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Random;
+
+import javax.persistence.EntityManagerFactory;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -33,7 +36,6 @@ public class TestDriver {
 	
 	public static void main(String[] args) {
 		
-	//	ConfigurableApplicationContext context = SpringApplication.run(TestDriver.class); 
 		// load logger //
 	//	PropertyConfigurator.configure(
 	//			TestDriver.class.getResourceAsStream("log4j.properties")
@@ -74,6 +76,28 @@ public class TestDriver {
 				block.setUniquePieces(8);
 				blockRepository.save(block); 
 				
+				EntityManagerFactory emf = (EntityManagerFactory) context.getBean("entityManagerFactory");
+				CustomQueryHelper customQueryHelper = new CustomQueryHelper(emf);
+				
+				//Teacher teacher = teacherRepository.findOne("2");
+				
+				List<Piece> piecesOfBlock = customQueryHelper.getPiecesOfBlock(93);
+				for (Piece piece : piecesOfBlock) {
+					System.out.println(block);
+				}
+				
+				customQueryHelper.addPieceToBlock(93, 4);
+				piecesOfBlock = customQueryHelper.getPiecesOfBlock(93);
+				for (Piece piece : piecesOfBlock) {
+					System.out.println(piece);
+				}
+				
+				customQueryHelper.removePieceFromBlock(93, 4);
+				piecesOfBlock = customQueryHelper.getPiecesOfBlock(93);
+				for (Piece piece : piecesOfBlock) {
+					System.out.println(piece);
+				}
+								
 				context.close();
 				
 				

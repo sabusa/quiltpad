@@ -71,7 +71,7 @@ public class Block {
 	@Override
 	public String toString() {
 		return "Block [Id = " + id + ", Name = " + name + ", Size = " +
-				blkSize + "Unique Pieces = "+ uniquePieces + "]";
+				blkSize + ", Unique Pieces = "+ uniquePieces + "]";
 	}
 	
 
