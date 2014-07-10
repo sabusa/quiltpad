@@ -8,6 +8,7 @@ import ca.bcit.comp2613.quiltpad.model.FabricValue;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.UUID;
 
 import org.apache.log4j.Logger;
 
@@ -21,17 +22,18 @@ public class PieceUtil {
 	public static ArrayList<Piece> createPieces() {
 		ArrayList<Piece> retpieces = new ArrayList<>();
 		Random rand = new Random();
-		ShapeType shape;
-		String blkName = "new block";
 		
+		ShapeType shape;
+			
 		log.info("Creating random pieces");
 		for (int i = 0; i < MAX_OBJS; i++) {
 			Piece piece = new Piece();
-			
-			// set block name 
-			piece.setBlkName(blkName);
 			piece.setId(i+1);
 			
+			// set block name to a random value
+			String randName = UUID.randomUUID().toString();
+			piece.setBlkName(randName);
+						
 			// initialize all side lengths to 0 //
 			piece.setvSideLength(0);
 			piece.sethSideLength(0);

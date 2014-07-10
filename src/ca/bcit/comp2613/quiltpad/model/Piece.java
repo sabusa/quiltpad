@@ -30,8 +30,9 @@ public class Piece {
 	private Integer cSideLength;
 	
 	@ManyToMany(cascade=CascadeType.ALL)
-	@JoinTable(name = "teacher_student",
-	joinColumns = { @JoinColumn(name = "piece_id") }, inverseJoinColumns = { @JoinColumn(name = "block_id") })
+	@JoinTable(name = "block_piece",
+	joinColumns = { @JoinColumn(name = "piece_id") }, inverseJoinColumns =
+					{ @JoinColumn(name = "block_id") })
 	private List<Block> blocks;
 	
 	
@@ -39,11 +40,11 @@ public class Piece {
 		super();
 	}
 	
-	public Piece(Integer id, ShapeType sType, FabricValue fValue, 
+	public Piece(String blkName, Integer id, ShapeType sType, FabricValue fValue, 
 			Integer pQty, Point position, Integer vSideLength, Integer hSideLength,
 			Integer aSideLength, Integer bSideLength, Integer cSideLength) {
 		super();
-	//	this.blkName = blkName;
+		this.blkName = blkName;
 		this.id = id;
 		this.sType = sType;
 		this.fValue = fValue;

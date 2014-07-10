@@ -23,7 +23,8 @@ public class Block {
 	
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "block_piece",
-	joinColumns = { @JoinColumn(name = "block_id") }, inverseJoinColumns = { @JoinColumn(name = "piece_id") })
+	joinColumns = { @JoinColumn(name = "block_id") }, inverseJoinColumns = 
+					{ @JoinColumn(name = "piece_id") })
 	private List<Piece> pieces;
 		
 		
