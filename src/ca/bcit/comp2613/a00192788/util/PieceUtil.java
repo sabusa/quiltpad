@@ -30,6 +30,7 @@ public class PieceUtil {
 			
 			// set block name 
 			piece.setBlkName(blkName);
+			piece.setId(i+1);
 			
 			// initialize all side lengths to 0 //
 			piece.setvSideLength(0);

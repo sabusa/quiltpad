@@ -17,7 +17,6 @@ import javax.persistence.ManyToMany;
 public class Piece {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO) // database generated id
 	private Integer id;
 	private String blkName;
 	private ShapeType sType; 
@@ -60,6 +59,9 @@ public class Piece {
 	
 	public Integer getId() {
 		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getBlkName() {
