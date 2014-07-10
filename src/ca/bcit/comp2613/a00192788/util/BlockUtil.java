@@ -24,7 +24,6 @@ public class BlockUtil {
 			Block block = new Block();
 			
 			// set all int properties of piece to random values //
-			block.setId(i+1);
 			block.setBlkSize(rand.nextInt(MAX_QTY) + 1);
 			block.setUniquePieces(rand.nextInt(MAX_OBJS) + 1);
 			

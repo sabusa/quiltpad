@@ -66,11 +66,10 @@ public class TestDriver {
 				blockRepository.save(blocks);
 				
 				// make quilt by merging blocks and pieces //
-				ArrayList<Quilt> quilts = QuiltUtil.mergeBlocks(blocks, pieces);
+		//		ArrayList<Quilt> quilts = QuiltUtil.mergeBlocks(blocks, pieces);
 				
 				// insert block
 				Block block = new Block();
-				block.setId(124);		
 				block.setName("Windmill");
 				block.setBlkSize(8);
 				block.setUniquePieces(8);
@@ -79,11 +78,9 @@ public class TestDriver {
 				EntityManagerFactory emf = (EntityManagerFactory) context.getBean("entityManagerFactory");
 				CustomQueryHelper customQueryHelper = new CustomQueryHelper(emf);
 				
-				//Teacher teacher = teacherRepository.findOne("2");
-				
 				List<Piece> piecesOfBlock = customQueryHelper.getPiecesOfBlock(93);
 				for (Piece piece : piecesOfBlock) {
-					System.out.println(block);
+					System.out.println(piece);
 				}
 				
 				customQueryHelper.addPieceToBlock(93, 4);
