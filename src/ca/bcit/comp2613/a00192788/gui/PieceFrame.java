@@ -47,7 +47,6 @@ public class PieceFrame extends JFrame {
 		initTable();		
 	}
 	private void initTable() {
-
 		pTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		pTable.getSelectionModel().addListSelectionListener(
 				new ListSelectionListener() {
@@ -101,36 +100,36 @@ public class PieceFrame extends JFrame {
 		frmPieces.setVisible(true);
 				
 		pTableModel = new NonEditableDefaultTableModel();
-		frmPieces.getContentPane().setLayout(null);
+		frmPieces.setLayout(null);
 
 		pTable = new JTable(pTableModel);
 		scrollPane = new JScrollPane(pTable);
 		scrollPane.setBounds(45,20,500,390);
-		frmPieces.getContentPane().add(scrollPane);
+		frmPieces.add(scrollPane);
 				
 		lblType = new JLabel("Type");
 		lblType.setBounds(100,430,100,25);
-		frmPieces.getContentPane().add(lblType);
+		frmPieces.add(lblType);
 		typeTextField = new JTextField();
 		typeTextField.setBounds(165,430,150,25);
 		typeTextField.setColumns(20);
-		frmPieces.getContentPane().add(typeTextField);
+		frmPieces.add(typeTextField);
 		
 		lblValue = new JLabel("Value");
 		lblValue.setBounds(100,470,100,25);
-		frmPieces.getContentPane().add(lblValue);
+		frmPieces.add(lblValue);
 		valueTextField = new JTextField();
 		valueTextField.setBounds(165,470,150,25);
 		valueTextField.setColumns(15);
-		frmPieces.getContentPane().add(valueTextField);
+		frmPieces.add(valueTextField);
 		
 		lblpQty = new JLabel("Quantity");
 		lblpQty.setBounds(100,510,120,25);
-		frmPieces.getContentPane().add(lblpQty);
+		frmPieces.add(lblpQty);
 		pQtyTextField = new JTextField();
 		pQtyTextField.setBounds(165,510,80,25);
 		pQtyTextField.setColumns(7);
-		frmPieces.getContentPane().add(pQtyTextField);
+		frmPieces.add(pQtyTextField);
 	}
 	
 }

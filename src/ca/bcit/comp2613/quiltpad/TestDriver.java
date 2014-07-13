@@ -37,13 +37,13 @@ public class TestDriver {
 	public static void main(String[] args) {
 		
 		// load logger //
-	//	PropertyConfigurator.configure(
-	//			TestDriver.class.getResourceAsStream("log4j.properties")
-	//			);
-	//	final Logger log = Logger.getLogger(TestDriver.class);
+		PropertyConfigurator.configure(
+				TestDriver.class.getResourceAsStream("log4j.properties")
+				);
+		final Logger log = Logger.getLogger(TestDriver.class);
 		
 		
-		Quilt quilt = new Quilt() {
+		/*Quilt quilt = new Quilt() {
 			
 			public void createQuilt() throws IllegalSizeException {
 				ConfigurableApplicationContext context = SpringApplication.run(TestDriver.class);
@@ -123,9 +123,9 @@ public class TestDriver {
 		}
 		catch (IllegalSizeException e) {
 			e.printStackTrace(); 
-		}	
+		}	*/
 
-		/*EventQueue.invokeLater(new Runnable() {
+		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					new BlockFrame();
@@ -133,7 +133,7 @@ public class TestDriver {
 					e.printStackTrace();
 				}
 			}
-		});*/
+		});
 	}
 	
 }

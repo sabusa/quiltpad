@@ -21,7 +21,6 @@ import ca.bcit.comp2613.quiltpad.model.Block;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.SwingConstants;
 
 
 @SuppressWarnings("serial")
@@ -81,12 +80,6 @@ public class BlockFrame extends JFrame {
 		} catch (Exception e) {}
 	}
 
-	public void listPieces() {
-		//String id = idTextField.getText();
-		//new PieceFrame(name);
-		new PieceFrame();
-	}
-	
 	public void deleteBlock() {
 		int response = JOptionPane.showConfirmDialog(null, "Do you really want to delete this block?", "Confirm",
 		JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -127,30 +120,35 @@ public class BlockFrame extends JFrame {
 		frmBlocks.setVisible(true);
 			
 		blkTableModel = new NonEditableDefaultTableModel();
-		frmBlocks.getContentPane().setLayout(new MigLayout("", "[][83.00][79.00][182.00][148.00]", "[][][][][][][][25.00][][25][][25.00]"));
+		frmBlocks.setLayout(new MigLayout("", "[][83.00][79.00][182.00][148.00]", "[][][][][][][][25.00][][25][][25.00]"));
 			
 		blkTable = new JTable(blkTableModel);
 		scrollPane = new JScrollPane(blkTable);
-		frmBlocks.getContentPane().add(scrollPane, "cell 1 0 7 6");
+		frmBlocks.add(scrollPane, "cell 1 0 7 6");
 		
 		buttonGroup = new ButtonGroup();
 		
 		btnNew = new JButton("New Block");
 		buttonGroup.add(btnNew);
-		frmBlocks.getContentPane().add(btnNew, "cell 0 0, growx");
+		btnNew.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new NewBlockFrame();
+			}
+		});
+		frmBlocks.add(btnNew, "cell 0 0, growx");
 			
 		btnList = new JButton("List Pieces");
 		buttonGroup.add(btnList);	
 		btnList.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				listPieces();
+				new PieceFrame();
 			}
 		});
-		frmBlocks.getContentPane().add(btnList, "cell 0 1");
+		frmBlocks.add(btnList, "cell 0 1");
 			
 		btnShow = new JButton("Show ");
 		buttonGroup.add(btnShow);
-		frmBlocks.getContentPane().add(btnShow, "cell 0 2, growx");
+		frmBlocks.add(btnShow, "cell 0 2, growx");
 		
 		btnDelete = new JButton("Delete");
 		btnDelete.addActionListener(new ActionListener() {
@@ -158,22 +156,22 @@ public class BlockFrame extends JFrame {
 				deleteBlock();
 			}
 		});
-		frmBlocks.getContentPane().add(btnDelete, "cell 0 3, growx");
+		frmBlocks.add(btnDelete, "cell 0 3, growx");
 		
 		lblName = new JLabel("Block Name");
-		frmBlocks.getContentPane().add(lblName, "cell 1 7,alignx trailing");
+		frmBlocks.add(lblName, "cell 1 7,alignx trailing");
 		nameTextField = new JTextField();
-		frmBlocks.getContentPane().add(nameTextField, "cell 2 7 2 1,growx");
+		frmBlocks.add(nameTextField, "cell 2 7 2 1,growx");
 		
 		lblSize = new JLabel("Size");
-		frmBlocks.getContentPane().add(lblSize, "cell 1 9,alignx trailing");
+		frmBlocks.add(lblSize, "cell 1 9,alignx trailing");
 		sizeTextField = new JTextField();
-		frmBlocks.getContentPane().add(sizeTextField, "cell 2 9,growx");
+		frmBlocks.add(sizeTextField, "cell 2 9,growx");
 		
 		lblUPieces = new JLabel("Unique Pieces");
-		frmBlocks.getContentPane().add(lblUPieces, "cell 1 11,alignx trailing");
+		frmBlocks.add(lblUPieces, "cell 1 11,alignx trailing");
 		uniquePiecesTextField = new JTextField();
-		frmBlocks.getContentPane().add(uniquePiecesTextField, "cell 2 11,growx");
+		frmBlocks.add(uniquePiecesTextField, "cell 2 11,growx");
 	}
 
 }
