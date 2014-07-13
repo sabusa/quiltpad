@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -13,48 +14,35 @@ public class NewBlockFrame extends JFrame {
 
 	private final int MINSIZE = 3;
 	private final int MAXSIZE = 16;
-	private JFrame frmNewBlk;
+	private JFrame frmNewBlock;
 	private JLabel lblBlkSize;
-	private JTextField blkSizeField;
+	private Integer blkSize;
+	private String size;
+	private Boolean validSize = false;
 
 	public NewBlockFrame() {
 		obtainBlkSize();
 	}
 
 	public void obtainBlkSize(){
-		frmNewBlk = new JFrame();
-		frmNewBlk.setTitle("Block Size");
-		frmNewBlk.setSize(300,200);
-		frmNewBlk.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmNewBlk.setVisible(true);
-		
-		lblBlkSize = new JLabel("Enter the size of the block:");
-		lblBlkSize.setBounds(75,75,25,25);
-		 
-		blkSizeField = new JTextField(15);
-	    blkSizeField.setBounds(100,100,25,25);
-	    blkSizeField.addActionListener(new ActionListener() {
-	    	public void actionPerformed(ActionEvent e) { 
-	    		Integer blkSize;
-	    		blkSize = getBlkSizeField();
-	    		if ((blkSize < MINSIZE) || (blkSize > MAXSIZE)) {
-	    		//	new Ruler(blkSize);
-	    		}
-	    		 		
-            }
-	    });	 
-		JPanel panel = new JPanel();
-	    panel.add(lblBlkSize);
-	    panel.add(blkSizeField);
-	     
-	    frmNewBlk.add(panel);
-  
-        }
-
-	 
+			
+		do {
+			size = JOptionPane.showInputDialog("Please enter "
+					+ "the size of the block: ");
+			blkSize = Integer.parseInt(size);
+			if ((blkSize > MINSIZE) && (blkSize < MAXSIZE)) {
+				validSize = true;
+				frmNewBlock = new JFrame();
+				frmNewBlock.setTitle("New Block");
+				frmNewBlock.add(new Ruler(blkSize));
+				frmNewBlock.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+				frmNewBlock.pack();
+		        frmNewBlock.setVisible(true);				
+			}
+		}	
+		while (!validSize);
+	}	
 	
-	 public Integer getBlkSizeField() {   
-		  return Integer.parseInt(blkSizeField.getText());
-		  
-	  }
-}	  
+}
+	
+
