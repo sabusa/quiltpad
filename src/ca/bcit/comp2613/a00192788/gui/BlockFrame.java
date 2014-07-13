@@ -82,7 +82,7 @@ public class BlockFrame extends JFrame {
 
 	public void deleteBlock() {
 		int response = JOptionPane.showConfirmDialog(null, "Do you really want to delete this block?", "Confirm",
-		JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+		JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
 		if (response == JOptionPane.YES_OPTION) {
 			// Delete specified block
 			int row = blkTable.getSelectedRow();
