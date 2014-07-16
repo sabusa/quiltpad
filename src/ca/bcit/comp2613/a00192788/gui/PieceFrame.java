@@ -5,14 +5,13 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JTable;
-
-import java.util.ArrayList;
-
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import ca.bcit.comp2613.a00192788.util.PieceUtil;
+import java.util.ArrayList;
+
+
 import ca.bcit.comp2613.quiltpad.QuiltPad;
 import ca.bcit.comp2613.quiltpad.model.Piece;
 
@@ -28,7 +27,6 @@ public class PieceFrame extends JFrame {
 	private NonEditableDefaultTableModel pTableModel;
 	public String[] columnNames = new String[] { "Id", "Type", "Value", "Quantity" };
 	public static ArrayList<Piece> pieces;
-	private ArrayList<Piece> blkPieces;
 	private JTextField typeTextField;
 	private JTextField valueTextField;
 	private JTextField pQtyTextField;

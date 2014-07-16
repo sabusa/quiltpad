@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 
 @SuppressWarnings("serial")
 public class NewBlockFrame extends JFrame {
-
+	
 	private final int MINSIZE = 3;
 	private final int MAXSIZE = 16;
 	private JFrame frmNewBlock;
@@ -17,41 +17,41 @@ public class NewBlockFrame extends JFrame {
 	 * NewBlockFrame Constructor
 	 */
 	public NewBlockFrame() {
-		obtainBlkSize();
-	}
+		blkSize = obtainBlkSize();
+		// create drawing frame for new block
+		frmNewBlock = new JFrame();
+		frmNewBlock.setTitle("New Block");
+		frmNewBlock.add(new Ruler(blkSize));
+		frmNewBlock.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+		frmNewBlock.pack();
+        frmNewBlock.setVisible(true);	
+   	}
 
 	/* 
 	 * Read user input for block size and verify that it is a valid value
 	 */
-	public void obtainBlkSize(){
+	public int obtainBlkSize(){
 		// loop until valid block size is received			
 		do {
 			size = JOptionPane.showInputDialog("Please enter "
 						+ "the size of the block: ");
 			blkSize = Integer.parseInt(size);
-			if ((blkSize > MINSIZE) && (blkSize < MAXSIZE) && 
-						(isPrime(blkSize) == false)) {
+			if ((blkSize > MINSIZE-1) && (blkSize < MAXSIZE+1)) {
 				validSize = true;
-				// create drawing frame for new block
-				frmNewBlock = new JFrame();
-				frmNewBlock.setTitle("New Block");
-				frmNewBlock.add(new Ruler(blkSize));
-				frmNewBlock.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
-				frmNewBlock.pack();
-		        frmNewBlock.setVisible(true);				
 			}
 			else { 
 				JOptionPane.showMessageDialog(null, "The block size must be a "
-						+ "non-prime integer which is greater than 2 and smaller "
+						+ "integer which is greater than 2 and smaller "
 						+ "than 17", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		}	
 		while (validSize == false);
+		return blkSize;
 	}
 	/*
 	 * check if the size of the block is a prime number
 	 */
-	private boolean isPrime(Integer blkSize) {
+	/*private boolean isPrime(Integer blkSize) {
 		boolean prime = true;
 		// is block size equally divisible by another number
 		for(int i = 2; i < blkSize; i++) {
@@ -61,6 +61,9 @@ public class NewBlockFrame extends JFrame {
 		}
 		return prime;
 	}
+	*/
+	
+	
 	
 }
 	

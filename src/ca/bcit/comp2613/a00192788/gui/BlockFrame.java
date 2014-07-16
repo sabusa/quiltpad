@@ -9,7 +9,6 @@ import javax.swing.JButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JTable;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.ListSelectionModel;
@@ -17,11 +16,8 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import net.miginfocom.swing.MigLayout;
-import ca.bcit.comp2613.a00192788.util.BlockUtil;
 import ca.bcit.comp2613.quiltpad.QuiltPad;
 import ca.bcit.comp2613.quiltpad.model.Block;
-import ca.bcit.comp2613.quiltpad.repository.BlockRepository;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
