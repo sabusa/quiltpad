@@ -1,33 +1,7 @@
 package ca.bcit.comp2613.quiltpad;
 
-import ca.bcit.comp2613.a00192788.gui.BlockFrame;
-import ca.bcit.comp2613.a00192788.util.BlockUtil;
-import ca.bcit.comp2613.a00192788.util.PieceUtil;
-import ca.bcit.comp2613.a00192788.util.QuiltComparator;
-import ca.bcit.comp2613.a00192788.util.QuiltUtil;
-import ca.bcit.comp2613.a00192788.util.except.IllegalLengthException;
-import ca.bcit.comp2613.a00192788.util.except.IllegalSizeException;
-import ca.bcit.comp2613.a00192788.util.report.Report;
-import ca.bcit.comp2613.quiltpad.model.Block;
-import ca.bcit.comp2613.quiltpad.model.Piece;
-import ca.bcit.comp2613.quiltpad.model.Quilt;
-import ca.bcit.comp2613.quiltpad.repository.BlockRepository;
-import ca.bcit.comp2613.quiltpad.repository.CustomQueryHelper;
-import ca.bcit.comp2613.quiltpad.repository.PieceRepository;
-
 import java.awt.EventQueue;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
-
-import javax.persistence.EntityManagerFactory;
-
-import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ImportResource;
 
 @EnableAutoConfiguration
@@ -37,15 +11,15 @@ public class TestDriver {
 	public static void main(String[] args) {
 		
 		// load logger //
-		PropertyConfigurator.configure(
+	/*	PropertyConfigurator.configure(
 				TestDriver.class.getResourceAsStream("log4j.properties")
 				);
 		final Logger log = Logger.getLogger(TestDriver.class);
+		*/
 		
-		
-		/*Quilt quilt = new Quilt() {
+	//	Quilt quilt = new Quilt() {
 			
-			public void createQuilt() throws IllegalSizeException {
+			/*public void createQuilt() throws IllegalSizeException {
 				ConfigurableApplicationContext context = SpringApplication.run(TestDriver.class);
 				
 		//		Random rand = new Random();
@@ -96,7 +70,7 @@ public class TestDriver {
 				}
 								
 				context.close();
-				
+				*/
 				
 				// sort quilt list in ascending block quantity, and
 				// then by descending quilt id //
@@ -114,11 +88,11 @@ public class TestDriver {
 		//			log.error("ERROR", new Exception("Generated 1% error - IllegalSizeException"));
 		//			throw new IllegalSizeException();
 		//		}		
-			}
-		};
+		//	}
+		//};
 			
 		// main program //	
-		try {
+	/*	try {
 			quilt.createQuilt();		
 		}
 		catch (IllegalSizeException e) {
@@ -128,12 +102,13 @@ public class TestDriver {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					new BlockFrame();
+					new QuiltPad();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
 	}
+	
 	
 }

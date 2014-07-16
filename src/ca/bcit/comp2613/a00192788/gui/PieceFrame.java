@@ -13,6 +13,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import ca.bcit.comp2613.a00192788.util.PieceUtil;
+import ca.bcit.comp2613.quiltpad.QuiltPad;
 import ca.bcit.comp2613.quiltpad.model.Piece;
 
 
@@ -42,7 +43,6 @@ public class PieceFrame extends JFrame {
 	}*/
 			
 	public PieceFrame() {
-		blkPieces = PieceUtil.createPieces();
 		initialize();
 		initTable();		
 	}
@@ -75,10 +75,11 @@ public class PieceFrame extends JFrame {
 	private void refreshTable() {
 		
 		Object[][] pData = null;
-		pData = new Object[blkPieces.size()][4];
+	//	QuiltPad.pieces = QuiltPad.copyIterator(QuiltPad.pieceRepository.findAll().iterator());
+		pData = new Object[QuiltPad.pieces.size()][4];
 
 		int i = 0;
-		for (Piece piece : blkPieces) {
+		for (Piece piece : QuiltPad.pieces) {
 			pData[i][0] = piece.getId();
 			pData[i][1] = piece.getsType();
 			pData[i][2] = piece.getfValue();

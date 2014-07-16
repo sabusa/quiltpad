@@ -10,6 +10,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JTable;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
@@ -17,7 +18,9 @@ import javax.swing.event.ListSelectionListener;
 
 import net.miginfocom.swing.MigLayout;
 import ca.bcit.comp2613.a00192788.util.BlockUtil;
+import ca.bcit.comp2613.quiltpad.QuiltPad;
 import ca.bcit.comp2613.quiltpad.model.Block;
+import ca.bcit.comp2613.quiltpad.repository.BlockRepository;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,7 +36,7 @@ public class BlockFrame extends JFrame {
 	private JTable blkTable;
 	private NonEditableDefaultTableModel blkTableModel;
 	public String[] columnNames = new String[] { "Id", "Name", "Size", "Unique Pieces" };
-	public static ArrayList<Block> blocks;
+	public static List<Block> blocks;
 	private JButton btnNew;
 	private JButton btnList;
 	private JButton btnShow;
@@ -45,10 +48,9 @@ public class BlockFrame extends JFrame {
 	private JLabel lblName;
 	private JLabel lblSize;
 	private JLabel lblUPieces;
-	
+		
 	
 	public BlockFrame() {
-		blocks = BlockUtil.createBlocks();
 		initialize();
 		initTable();		
 	}
@@ -81,14 +83,16 @@ public class BlockFrame extends JFrame {
 	}
 
 	public void deleteBlock() {
-		int response = JOptionPane.showConfirmDialog(null, "Do you really want to delete this block?", "Confirm",
+		int response = JOptionPane.showConfirmDialog(null, "Do you really want "
+							+ "to delete this block?", "Confirm",
 		JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
 		if (response == JOptionPane.YES_OPTION) {
 			// Delete specified block
 			int row = blkTable.getSelectedRow();
 			Integer id = (Integer) blkTable.getValueAt(row, 0);
-			Block block = new Block(id, null, null, null);
-			BlockUtil.delete(blocks, block);
+		//	Block block = new Block(id, null, null, null);
+		//	BlockUtil.delete(blocks, block);
+			QuiltPad.blockRepository.delete(id);
 			refreshTable();
 		}
 	}
@@ -96,9 +100,10 @@ public class BlockFrame extends JFrame {
 	private void refreshTable() {
 			
 		Object[][] blkData = null;
-		blkData = new Object[blocks.size()][4];
+	//	QuiltPad.blocks = QuiltPad.copyIterator(QuiltPad.blockRepository.findAll().iterator());
+		blkData = new Object[QuiltPad.blocks.size()][4];
 		int i = 0;
-		for (Block block : blocks) {
+		for (Block block : QuiltPad.blocks) {
 			blkData[i][0] = block.getId();
 			blkData[i][1] = block.getName();
 			blkData[i][2] = block.getBlkSize();

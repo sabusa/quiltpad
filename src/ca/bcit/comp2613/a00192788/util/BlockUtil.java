@@ -2,6 +2,7 @@ package ca.bcit.comp2613.a00192788.util;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
@@ -15,8 +16,8 @@ public class BlockUtil {
 	private final static Integer MAX_OBJS = 100;
 	static Logger log = Logger.getLogger(BlockUtil.class);
 	
-	public static ArrayList<Block> createBlocks() {
-		ArrayList<Block> retblocks = new ArrayList<Block>();
+	public static List<Block> createBlocks() {
+		List<Block> retblocks = new ArrayList<Block>();
 		Random rand = new Random();
 		
 		log.info("Creating random blocks");
@@ -36,13 +37,13 @@ public class BlockUtil {
 		return retblocks;		
 	}	
 	
-	public static void printBlocks(ArrayList<Block> blocks) {
+	public static void printBlocks(List<Block> blocks) {
 		for (Block block : blocks) {
 			System.out.println(block);
 		}		
 	}
 	
-	public static void delete(ArrayList<Block> blocks, Block block) {
+	public static void delete(List<Block> blocks, Block block) {
 		Iterator<Block> iter = blocks.iterator();
 		while (iter.hasNext()) {
 			Block blockLoop = iter.next();
