@@ -100,7 +100,7 @@ public class BlockFrame extends JFrame {
 	private void refreshTable() {
 			
 		Object[][] blkData = null;
-	//	QuiltPad.blocks = QuiltPad.copyIterator(QuiltPad.blockRepository.findAll().iterator());
+		QuiltPad.blocks = QuiltPad.copyIterator(QuiltPad.blockRepository.findAll().iterator());
 		blkData = new Object[QuiltPad.blocks.size()][4];
 		int i = 0;
 		for (Block block : QuiltPad.blocks) {

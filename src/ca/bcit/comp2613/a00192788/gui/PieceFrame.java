@@ -75,9 +75,8 @@ public class PieceFrame extends JFrame {
 	private void refreshTable() {
 		
 		Object[][] pData = null;
-	//	QuiltPad.pieces = QuiltPad.copyIterator(QuiltPad.pieceRepository.findAll().iterator());
+		QuiltPad.pieces = QuiltPad.copyIterator(QuiltPad.pieceRepository.findAll().iterator());
 		pData = new Object[QuiltPad.pieces.size()][4];
-
 		int i = 0;
 		for (Piece piece : QuiltPad.pieces) {
 			pData[i][0] = piece.getId();
