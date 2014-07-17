@@ -88,10 +88,7 @@ public class NewBlockFrame extends JFrame {
 		buttonGroup.add(btnReset);
 		btnReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Ruler ruler = new Ruler(blkSize);
-				controlPanel.add(ruler, "cell 2 0 4 6");
 				controlPanel.repaint();
-				frmNewBlock.getContentPane().add(controlPanel);
 			}
 		});
 		controlPanel.add(btnReset, "cell 0 3,growx");
