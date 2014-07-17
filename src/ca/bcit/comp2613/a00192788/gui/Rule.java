@@ -43,7 +43,7 @@ public class Rule extends JComponent {
 	if (orientation == HORIZONTAL) {
 	    g2.drawString(num, 2, 10);
 	} else { // vertical
-	    g2.drawString(num, 2, 10);
+	    g2.drawString(num, 4, 10);
 	}
 	
 	num = null;

@@ -24,8 +24,7 @@ public class DrawPanel extends JPanel{
 	protected void paintComponent(Graphics g) { 
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g; 
-		if (gridBackground == null)
-			drawGrid(gridSize);
+		drawGrid(gridSize);
 		g2.drawImage(gridBackground, 0, 0, this);
 		createOuterEdge(g2);
 		

@@ -20,7 +20,9 @@ public class Ruler extends JPanel {
 		
 		// create scroll pane
 		gridSize = DrawPanel.calcGrid(blkSize);
-		ruler = new JScrollPane(new Grid(gridSize));
+		ruler = new JScrollPane(new Grid(gridSize), 
+								JScrollPane.VERTICAL_SCROLLBAR_NEVER,
+								JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 	   	ruler.setPreferredSize(new Dimension(PANELSIZE, PANELSIZE));
 		ruler.setViewportBorder(BorderFactory.createLineBorder(Color.black));
 
@@ -31,7 +33,7 @@ public class Ruler extends JPanel {
 
 		//add vertical ruler
 		rowView = new Rule(Rule.VERTICAL, gridSize);
-		rowView.setPreferredSize(new Dimension(40,0));
+		rowView.setPreferredSize(new Dimension(43,0));
 		ruler.setRowHeaderView(rowView);
 		
 		// extend ruler into upper left corner
