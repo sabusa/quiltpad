@@ -8,10 +8,13 @@ import javax.swing.JPanel;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.JButton;
+
+import ca.bcit.comp2613.quiltpad.model.BlkLine;
 
 @SuppressWarnings("serial")
 public class NewBlockFrame extends JFrame {
@@ -28,7 +31,8 @@ public class NewBlockFrame extends JFrame {
 	private JButton btnUndo;
 	private JButton btnSave;
 	private ButtonGroup buttonGroup;
-	
+	private ArrayList<BlkLine> blkLines;
+		
 	/* 
 	 * NewBlockFrame Constructor
 	 */
@@ -96,6 +100,17 @@ public class NewBlockFrame extends JFrame {
 								
 		btnUndo = new JButton("Undo Last");
 		buttonGroup.add(btnUndo);
+		btnUndo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DrawPiece draw = new DrawPiece();
+				blkLines = draw.removeBlkLine(blkLines);
+				controlPanel.repaint();
+				draw.redrawBlkLines(blkLines);
+				controlPanel.add(draw);
+				
+				//	controlPanel.repaint();
+			}
+		});
 		controlPanel.add(btnUndo, "cell 3 6,alignx left");
 				
 		btnSave = new JButton("Save");

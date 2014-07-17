@@ -2,16 +2,16 @@ package ca.bcit.comp2613.quiltpad.model;
 
 import java.awt.Point;
 
-public class BlkLines {
+public class BlkLine {
 	
 	Point startPt;
 	Point stopPt;
 	
-	public BlkLines() {
+	public BlkLine() {
 		super();
 	}
 
-	public BlkLines(Point startPt, Point stopPt) {
+	public BlkLine(Point startPt, Point stopPt) {
 		this.startPt = startPt;
 		this.stopPt = stopPt;
 	}

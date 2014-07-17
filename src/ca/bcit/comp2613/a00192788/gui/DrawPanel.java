@@ -105,7 +105,7 @@ public class DrawPanel extends JPanel{
 		}
 	}
 
-	public void drawPiece(Point startPt, Point stopPt) {
+	public void drawBlkLine(Point startPt, Point stopPt) {
 		Graphics2D g2 = (Graphics2D) this.getGraphics();
 		g2.setColor(Color.BLACK);
 		g2.setStroke(new BasicStroke(3));

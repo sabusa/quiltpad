@@ -20,7 +20,7 @@ public class Ruler extends JPanel {
 		
 		// create scroll pane
 		gridSize = DrawPanel.calcGrid(blkSize);
-		ruler = new JScrollPane(new Grid(gridSize), 
+		ruler = new JScrollPane(new DrawPiece(), 
 								JScrollPane.VERTICAL_SCROLLBAR_NEVER,
 								JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 	   	ruler.setPreferredSize(new Dimension(PANELSIZE, PANELSIZE));
