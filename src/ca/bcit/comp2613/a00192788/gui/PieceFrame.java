@@ -19,8 +19,7 @@ import ca.bcit.comp2613.quiltpad.model.Piece;
 @SuppressWarnings("serial")
 public class PieceFrame extends JFrame {
 	
-	private final int WIDTH = 600;
-	private final int HEIGHT = 600;
+	private final int FRAMESIZE = 600;
 	private JFrame frmPieces;
 	private JScrollPane scrollPane;
 	private JTable pTable;
@@ -93,7 +92,7 @@ public class PieceFrame extends JFrame {
 	private void initialize() {
 		frmPieces = new JFrame();
 		frmPieces.setTitle("Pieces");
-		frmPieces.setBounds(100, 100, WIDTH, HEIGHT);
+		frmPieces.setBounds(100, 100, FRAMESIZE, FRAMESIZE);
 		frmPieces.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmPieces.setVisible(true);
 				

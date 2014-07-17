@@ -9,7 +9,7 @@ import javax.swing.JScrollPane;
 @SuppressWarnings("serial")
 public class Ruler extends JPanel {
 
-	private final int PANESIZE = 580;
+	private final int PANELSIZE = 580;
 	private Rule columnView;
 	private Rule rowView;
     private JScrollPane ruler;
@@ -21,7 +21,7 @@ public class Ruler extends JPanel {
 		// create scroll pane
 		gridSize = DrawPanel.calcGrid(blkSize);
 		ruler = new JScrollPane(new Grid(gridSize));
-	   	ruler.setPreferredSize(new Dimension(PANESIZE, PANESIZE));
+	   	ruler.setPreferredSize(new Dimension(PANELSIZE, PANELSIZE));
 		ruler.setViewportBorder(BorderFactory.createLineBorder(Color.black));
 
 		// add horizontal ruler
@@ -41,7 +41,7 @@ public class Ruler extends JPanel {
 		
 		// add to scroll pane
         add(ruler);
-        setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
+     //   setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
 	}
 	  
 }

@@ -25,8 +25,7 @@ import java.awt.event.ActionListener;
 @SuppressWarnings("serial")
 public class BlockFrame extends JFrame {
 	
-	private final int WIDTH = 600;
-	private final int HEIGHT = 600;
+	private final int FRAMESIZE = 600;
 	private JFrame frmBlocks;
 	private JScrollPane scrollPane;
 	private JTable blkTable;
@@ -116,7 +115,7 @@ public class BlockFrame extends JFrame {
 	private void initialize() {
 		frmBlocks = new JFrame();
 		frmBlocks.setTitle("Blocks");
-		frmBlocks.setBounds(100, 100, WIDTH, HEIGHT);
+		frmBlocks.setBounds(100, 100, FRAMESIZE, FRAMESIZE);
 		frmBlocks.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmBlocks.setVisible(true);
 			
