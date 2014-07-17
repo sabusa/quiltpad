@@ -1,12 +1,15 @@
 package ca.bcit.comp2613.a00192788.gui;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
 import java.awt.Dimension;
+
 import net.miginfocom.swing.MigLayout;
+
 import javax.swing.JButton;
-import java.awt.Component;
 
 @SuppressWarnings("serial")
 public class NewBlockFrame extends JFrame {
@@ -18,11 +21,11 @@ public class NewBlockFrame extends JFrame {
 	private Integer blkSize;
 	private String size;
 	private boolean validSize;
-	private JButton btnNewButton_1;
-	private JButton btnNewButton_2;
-	private JButton btnNewButton;
-	private JButton btnNewButton_3;
-	private JButton btnNewButton_4;
+	private JButton btnNew;
+	private JButton btnReset;
+	private JButton btnUndo;
+	private JButton btnSave;
+	private ButtonGroup buttonGroup;
 	
 	/* 
 	 * NewBlockFrame Constructor
@@ -32,32 +35,38 @@ public class NewBlockFrame extends JFrame {
 		// create drawing frame for new block
 		frmNewBlock = new JFrame();
 		frmNewBlock.setPreferredSize(new Dimension(750, 700));
-		frmNewBlock.setTitle("New Block");
-		controlPanel = new JPanel();
-		controlPanel.setLayout(new MigLayout("", "[100][20][3][287][287][3]", "[][12.00][25][25][25][500][][]"));
-		
-		frmNewBlock.getContentPane().add(controlPanel);
-		
-		Ruler ruler = new Ruler(blkSize);
-		controlPanel.add(ruler, "cell 2 0 4 6");
-		
-		btnNewButton_1 = new JButton("New button");
-		controlPanel.add(btnNewButton_1, "cell 0 2");
-		
-		btnNewButton_2 = new JButton("New button");
-		controlPanel.add(btnNewButton_2, "cell 0 3");
-		
-		btnNewButton = new JButton("New button");
-		controlPanel.add(btnNewButton, "cell 0 4");
-		
-		btnNewButton_4 = new JButton("New button");
-		controlPanel.add(btnNewButton_4, "cell 3 6,alignx left");
-		
-		btnNewButton_3 = new JButton("New button");
-		controlPanel.add(btnNewButton_3, "cell 4 6,alignx right");
+		frmNewBlock.setTitle("New Block");	
 		frmNewBlock.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 		frmNewBlock.pack();
         frmNewBlock.setVisible(true);	
+		
+        controlPanel = new JPanel();
+		controlPanel.setLayout(new MigLayout("", "[100][20][3][287][287][3]",
+									"[][12.00][25][25][25][500][][]"));
+		
+		buttonGroup = new ButtonGroup();
+		
+		btnNew = new JButton("Start New Block");
+		buttonGroup.add(btnNew);
+		controlPanel.add(btnNew, "cell 0 2");
+		
+		btnReset = new JButton("Reset Block");
+		buttonGroup.add(btnReset);
+		controlPanel.add(btnReset, "cell 0 3,growx");
+						
+		btnUndo = new JButton("Undo Last");
+		buttonGroup.add(btnUndo);
+		controlPanel.add(btnUndo, "cell 3 6,alignx left");
+		
+		btnSave = new JButton("Save");
+		buttonGroup.add(btnSave);
+		controlPanel.add(btnSave, "cell 4 6,alignx right");
+		
+		Ruler ruler = new Ruler(blkSize);
+		controlPanel.add(ruler, "cell 2 0 4 6");
+		frmNewBlock.getContentPane().add(controlPanel);
+		
+
    	}
 
 	/* 
