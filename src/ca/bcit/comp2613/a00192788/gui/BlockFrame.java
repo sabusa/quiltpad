@@ -121,7 +121,7 @@ public class BlockFrame extends JFrame {
 		frmBlocks.setVisible(true);
 			
 		blkTableModel = new NonEditableDefaultTableModel();
-		frmBlocks.setLayout(new MigLayout("", "[][83.00][79.00][182.00][148.00]", "[][][][][][][][25.00][][25][][25.00]"));
+		frmBlocks.setLayout(new MigLayout("", "[][83.00][79.00][182.00][148.00]", "[][][][][][][][25][][25][][25]"));
 			
 		blkTable = new JTable(blkTableModel);
 		scrollPane = new JScrollPane(blkTable);

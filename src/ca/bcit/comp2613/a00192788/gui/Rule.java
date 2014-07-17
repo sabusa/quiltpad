@@ -52,7 +52,6 @@ public class Rule extends JComponent {
 		if ((inch != 9) && (inch != 11) && (inch != 13)) {
 			// draw long ticks and number for full inches and short ticks for 1/2 inches
 			if (i % inch == 0)  { // full inch marking
-				System.out.println("i = " + i + ", inch = " + inch);
 				lineLength = 10;
 				num = Integer.toString(i/inch);
 			}else {  // half inch marking
