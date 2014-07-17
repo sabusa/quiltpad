@@ -6,6 +6,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import net.miginfocom.swing.MigLayout;
 
@@ -31,7 +33,9 @@ public class NewBlockFrame extends JFrame {
 	 * NewBlockFrame Constructor
 	 */
 	public NewBlockFrame() {
+		// read and verify user entered block size
 		blkSize = obtainBlkSize();
+		
 		// create drawing frame for new block
 		frmNewBlock = new JFrame();
 		frmNewBlock.setPreferredSize(new Dimension(750, 700));
@@ -48,6 +52,12 @@ public class NewBlockFrame extends JFrame {
 		
 		btnNew = new JButton("Start New Block");
 		buttonGroup.add(btnNew);
+		btnNew.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frmNewBlock.dispose();
+				new NewBlockFrame();
+			}
+		});
 		controlPanel.add(btnNew, "cell 0 2");
 		
 		btnReset = new JButton("Reset Block");

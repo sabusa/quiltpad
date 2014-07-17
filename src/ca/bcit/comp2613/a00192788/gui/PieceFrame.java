@@ -93,7 +93,7 @@ public class PieceFrame extends JFrame {
 		frmPieces = new JFrame();
 		frmPieces.setTitle("Pieces");
 		frmPieces.setBounds(100, 100, FRAMESIZE, FRAMESIZE);
-		frmPieces.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmPieces.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmPieces.setVisible(true);
 				
 		pTableModel = new NonEditableDefaultTableModel();
