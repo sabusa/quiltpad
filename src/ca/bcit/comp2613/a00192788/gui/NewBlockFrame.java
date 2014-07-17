@@ -62,49 +62,51 @@ public class NewBlockFrame extends JFrame {
 	
 	private void drawNewDrawPanel(Integer blkSize2) {
 		// create drawing frame for new block
-				frmNewBlock = new JFrame();
-				frmNewBlock.setPreferredSize(new Dimension(750, 700));
-				frmNewBlock.setTitle("New Block");	
-				frmNewBlock.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
-				frmNewBlock.pack();
-		        frmNewBlock.setVisible(true);	
+		frmNewBlock = new JFrame();
+		frmNewBlock.setPreferredSize(new Dimension(750, 700));
+		frmNewBlock.setTitle("New Block");	
+		frmNewBlock.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+		frmNewBlock.pack();
+		frmNewBlock.setVisible(true);	
 				
-		        controlPanel = new JPanel();
-				controlPanel.setLayout(new MigLayout("", "[100][15][5][287][287][3]", "[][12.00][25][25][25][500][][]"));
+		controlPanel = new JPanel();
+		controlPanel.setLayout(new MigLayout("", "[100][15][5][287][287][3]", "[][12.00][25][25][25][500][][]"));
 				
-				buttonGroup = new ButtonGroup();
+		buttonGroup = new ButtonGroup();
 				
-				btnNew = new JButton("Start New Block");
-				buttonGroup.add(btnNew);
-				btnNew.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						frmNewBlock.dispose();
-						new NewBlockFrame();
-					}
-				});
-				controlPanel.add(btnNew, "cell 0 2");
+		btnNew = new JButton("Start New Block");
+		buttonGroup.add(btnNew);
+		btnNew.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frmNewBlock.dispose();
+				new NewBlockFrame();
+			}
+		});
+		controlPanel.add(btnNew, "cell 0 2");
 				
-				btnReset = new JButton("Reset Block");
-				buttonGroup.add(btnReset);
-				btnReset.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						//reset blk
-					}
-				});
-				controlPanel.add(btnReset, "cell 0 3,growx");
-								
-				btnUndo = new JButton("Undo Last");
-				buttonGroup.add(btnUndo);
-				controlPanel.add(btnUndo, "cell 3 6,alignx left");
-				
-				btnSave = new JButton("Save");
-				buttonGroup.add(btnSave);
-				controlPanel.add(btnSave, "cell 4 6,alignx right");
-				
+		btnReset = new JButton("Reset Block");
+		buttonGroup.add(btnReset);
+		btnReset.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				Ruler ruler = new Ruler(blkSize);
 				controlPanel.add(ruler, "cell 2 0 4 6");
+				controlPanel.repaint();
 				frmNewBlock.getContentPane().add(controlPanel);
-	
+			}
+		});
+		controlPanel.add(btnReset, "cell 0 3,growx");
+								
+		btnUndo = new JButton("Undo Last");
+		buttonGroup.add(btnUndo);
+		controlPanel.add(btnUndo, "cell 3 6,alignx left");
+				
+		btnSave = new JButton("Save");
+		buttonGroup.add(btnSave);
+		controlPanel.add(btnSave, "cell 4 6,alignx right");
+				
+		Ruler ruler = new Ruler(blkSize);
+		controlPanel.add(ruler, "cell 2 0 4 6");
+		frmNewBlock.getContentPane().add(controlPanel);
 	}
 	/*
 	 * check if the size of the block is a prime number
