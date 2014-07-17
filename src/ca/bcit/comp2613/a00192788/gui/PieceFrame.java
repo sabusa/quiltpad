@@ -5,14 +5,13 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JTable;
-
-import java.util.ArrayList;
-
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import ca.bcit.comp2613.a00192788.util.PieceUtil;
+import java.util.ArrayList;
+
+
 import ca.bcit.comp2613.quiltpad.QuiltPad;
 import ca.bcit.comp2613.quiltpad.model.Piece;
 
@@ -20,15 +19,13 @@ import ca.bcit.comp2613.quiltpad.model.Piece;
 @SuppressWarnings("serial")
 public class PieceFrame extends JFrame {
 	
-	private final int WIDTH = 600;
-	private final int HEIGHT = 600;
+	private final int FRAMESIZE = 600;
 	private JFrame frmPieces;
 	private JScrollPane scrollPane;
 	private JTable pTable;
 	private NonEditableDefaultTableModel pTableModel;
 	public String[] columnNames = new String[] { "Id", "Type", "Value", "Quantity" };
 	public static ArrayList<Piece> pieces;
-	private ArrayList<Piece> blkPieces;
 	private JTextField typeTextField;
 	private JTextField valueTextField;
 	private JTextField pQtyTextField;
@@ -95,8 +92,8 @@ public class PieceFrame extends JFrame {
 	private void initialize() {
 		frmPieces = new JFrame();
 		frmPieces.setTitle("Pieces");
-		frmPieces.setBounds(100, 100, WIDTH, HEIGHT);
-		frmPieces.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmPieces.setBounds(100, 100, FRAMESIZE, FRAMESIZE);
+		frmPieces.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmPieces.setVisible(true);
 				
 		pTableModel = new NonEditableDefaultTableModel();

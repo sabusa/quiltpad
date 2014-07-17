@@ -9,7 +9,6 @@ import javax.swing.JButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JTable;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.ListSelectionModel;
@@ -17,11 +16,8 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import net.miginfocom.swing.MigLayout;
-import ca.bcit.comp2613.a00192788.util.BlockUtil;
 import ca.bcit.comp2613.quiltpad.QuiltPad;
 import ca.bcit.comp2613.quiltpad.model.Block;
-import ca.bcit.comp2613.quiltpad.repository.BlockRepository;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -29,8 +25,7 @@ import java.awt.event.ActionListener;
 @SuppressWarnings("serial")
 public class BlockFrame extends JFrame {
 	
-	private final int WIDTH = 600;
-	private final int HEIGHT = 600;
+	private final int FRAMESIZE = 600;
 	private JFrame frmBlocks;
 	private JScrollPane scrollPane;
 	private JTable blkTable;
@@ -120,12 +115,13 @@ public class BlockFrame extends JFrame {
 	private void initialize() {
 		frmBlocks = new JFrame();
 		frmBlocks.setTitle("Blocks");
-		frmBlocks.setBounds(100, 100, WIDTH, HEIGHT);
+		frmBlocks.setBounds(100, 100, FRAMESIZE, FRAMESIZE);
 		frmBlocks.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmBlocks.setVisible(true);
 			
 		blkTableModel = new NonEditableDefaultTableModel();
-		frmBlocks.setLayout(new MigLayout("", "[][83.00][79.00][182.00][148.00]", "[][][][][][][][25.00][][25][][25.00]"));
+		frmBlocks.setLayout(new MigLayout("", "[][83.00][79.00][182.00][148.00]", 
+									"[][][][][][][][25][][25][][25]"));
 			
 		blkTable = new JTable(blkTableModel);
 		scrollPane = new JScrollPane(blkTable);

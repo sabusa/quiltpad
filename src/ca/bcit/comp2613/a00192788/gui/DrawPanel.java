@@ -24,9 +24,10 @@ public class DrawPanel extends JPanel{
 	protected void paintComponent(Graphics g) { 
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g; 
-		if (gridBackground == null)
-			drawGrid(gridSize);
+		drawGrid(gridSize);
 		g2.drawImage(gridBackground, 0, 0, this);
+		createOuterEdge(g2);
+		
 	}
 	
 	 @Override
@@ -110,6 +111,12 @@ public class DrawPanel extends JPanel{
 		g2.setStroke(new BasicStroke(3));
 		g2.drawLine(startP.x, startP.y, stopP.x, stopP.y);
 	}	
+	
+	private void createOuterEdge(Graphics2D g2) {
+		g2.setColor(Color.BLACK);
+		g2.setStroke(new BasicStroke(3));
+		g2.drawRect(OFFSET, OFFSET, GRIDMAX-2, GRIDMAX-2);
+	}
 		
 }
 
