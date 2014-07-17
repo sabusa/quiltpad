@@ -70,7 +70,8 @@ public class NewBlockFrame extends JFrame {
 		frmNewBlock.setVisible(true);	
 				
 		controlPanel = new JPanel();
-		controlPanel.setLayout(new MigLayout("", "[100][15][5][287][287][3]", "[][12.00][25][25][25][500][][]"));
+		controlPanel.setLayout(new MigLayout("", "[100][15][5][287][287][3]", 
+								"[][12.00][25][25][25][500][][]"));
 				
 		buttonGroup = new ButtonGroup();
 				

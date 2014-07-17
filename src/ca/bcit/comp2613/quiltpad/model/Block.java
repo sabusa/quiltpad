@@ -23,6 +23,7 @@ public class Block {
 	private String name;
 	private Integer blkSize;
 	private Integer uniquePieces;
+
 	
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "block_piece",

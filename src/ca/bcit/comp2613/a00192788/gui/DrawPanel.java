@@ -61,12 +61,12 @@ public class DrawPanel extends JPanel{
     	return gridSize = GRIDMAX / blkSize;
 	}
 	
-	public Point goToClosestNode(Point p) {
+	public Point goToClosestNode(Point pt) {
 		int xInter;
 		int yInter;
 		
-		int x = (int) p.getX() - OFFSET;
-		int y = (int) p.getY() - OFFSET;
+		int x = (int) pt.getX() - OFFSET;
+		int y = (int) pt.getY() - OFFSET;
 		int modX = x % gridSize;
 		int modY = y % gridSize;
 	            
@@ -91,25 +91,25 @@ public class DrawPanel extends JPanel{
 	 /* 
      * Draw a circle around the closest node to the mouse
      */ 
-	public void circleNode(Point p) {
+	public void circleNode(Point pt) {
 		// show the closest intersection point
 		Graphics2D g2 = (Graphics2D) this.getGraphics();
 		g2.setColor(Color.BLACK);
 		
 		// check to see point is within panel
-		if ((p.x>=0 && p.x<=PANESIZE) && (p.y>=0 && p.y<=PANESIZE)) {
+		if ((pt.x>=0 && pt.x<=PANESIZE) && (pt.y>=0 && pt.y<=PANESIZE)) {
 			
 		//draw circle
-		g2.drawOval(p.x-4, p.y-4, 8, 8);
+		g2.drawOval(pt.x-4, pt.y-4, 8, 8);
 		g2.dispose();
 		}
 	}
 
-	public void drawPiece(Point startP, Point stopP) {
+	public void drawPiece(Point startPt, Point stopPt) {
 		Graphics2D g2 = (Graphics2D) this.getGraphics();
 		g2.setColor(Color.BLACK);
 		g2.setStroke(new BasicStroke(3));
-		g2.drawLine(startP.x, startP.y, stopP.x, stopP.y);
+		g2.drawLine(startPt.x, startPt.y, stopPt.x, stopPt.y);
 	}	
 	
 	private void createOuterEdge(Graphics2D g2) {

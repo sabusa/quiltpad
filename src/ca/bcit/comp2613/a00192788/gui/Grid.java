@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 public class Grid extends JPanel{
 
 	private final int PANESIZE = 520;	
-	private Point startP, stopP;
+	private Point startPt, stopPt;
 	
 	public Grid(int gridSize) {
 		final DrawPanel drawPanel = new DrawPanel();	
@@ -23,8 +23,8 @@ public class Grid extends JPanel{
 		addMouseListener(new MouseListener() {     	  
 			public void mousePressed(MouseEvent e) {
 				// go to closest node from mouse pressed to start line
-				startP = drawPanel.goToClosestNode(e.getPoint());
-				drawPanel.circleNode(startP);
+				startPt = drawPanel.goToClosestNode(e.getPoint());
+				drawPanel.circleNode(startPt);
 			//	repaint();
   			}
 
@@ -37,9 +37,9 @@ public class Grid extends JPanel{
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				// go to closest node from mouse pressed to start line
-				stopP = drawPanel.goToClosestNode(e.getPoint());
-				drawPanel.circleNode(stopP);
-				drawPanel.drawPiece(startP, stopP);
+				stopPt = drawPanel.goToClosestNode(e.getPoint());
+				drawPanel.circleNode(stopPt);
+				drawPanel.drawPiece(startPt, stopPt);
 		
 			}
 
