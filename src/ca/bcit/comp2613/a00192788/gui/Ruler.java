@@ -19,8 +19,8 @@ public class Ruler extends JPanel {
 	public Ruler(Integer blkSize) {
 		
 		// create scroll pane
-		gridSize = DrawPanel.calcGrid(blkSize);
-		ruler = new JScrollPane(new Grid(gridSize), 
+		gridSize = Grid.calcGrid(blkSize);
+		ruler = new JScrollPane(new DrawPiece(gridSize), 
 								JScrollPane.VERTICAL_SCROLLBAR_NEVER,
 								JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 	   	ruler.setPreferredSize(new Dimension(PANELSIZE, PANELSIZE));
@@ -33,7 +33,7 @@ public class Ruler extends JPanel {
 
 		//add vertical ruler
 		rowView = new Rule(Rule.VERTICAL, gridSize);
-		rowView.setPreferredSize(new Dimension(43,0));
+		rowView.setPreferredSize(new Dimension(40,0));
 		ruler.setRowHeaderView(rowView);
 		
 		// extend ruler into upper left corner
@@ -45,6 +45,18 @@ public class Ruler extends JPanel {
         add(ruler);
      //   setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
 	}
+
+
+	public int getGridSize() {
+		return gridSize;
+	}
+
+
+	public void setGridSize(int gridSize) {
+		this.gridSize = gridSize;
+	}
+
+
 	  
 }
 

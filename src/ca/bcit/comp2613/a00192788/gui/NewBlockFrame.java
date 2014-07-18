@@ -8,10 +8,13 @@ import javax.swing.JPanel;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.JButton;
+
+import ca.bcit.comp2613.quiltpad.model.BlkLine;
 
 @SuppressWarnings("serial")
 public class NewBlockFrame extends JFrame {
@@ -28,7 +31,8 @@ public class NewBlockFrame extends JFrame {
 	private JButton btnUndo;
 	private JButton btnSave;
 	private ButtonGroup buttonGroup;
-	
+	private ArrayList<BlkLine> blkLines;
+		
 	/* 
 	 * NewBlockFrame Constructor
 	 */
@@ -36,7 +40,7 @@ public class NewBlockFrame extends JFrame {
 		// read and verify user entered block size
 		blkSize = obtainBlkSize();
 		drawNewDrawPanel(blkSize);
-   	}
+  	}
 
 	/* 
 	 * Read user input for block size and verify that it is a valid value
@@ -60,7 +64,7 @@ public class NewBlockFrame extends JFrame {
 		return blkSize;
 	}
 	
-	private void drawNewDrawPanel(Integer blkSize2) {
+	private void drawNewDrawPanel(Integer blkSize) {
 		// create drawing frame for new block
 		frmNewBlock = new JFrame();
 		frmNewBlock.setPreferredSize(new Dimension(750, 700));
@@ -68,9 +72,12 @@ public class NewBlockFrame extends JFrame {
 		frmNewBlock.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 		frmNewBlock.pack();
 		frmNewBlock.setVisible(true);	
-				
+		
 		controlPanel = new JPanel();
-		controlPanel.setLayout(new MigLayout("", "[100][15][5][287][287][3]", "[][12.00][25][25][25][500][][]"));
+		controlPanel.setLayout(new MigLayout("", "[100][15][3][287][287][3]", "[][12.00][25][25][25][500][][]"));
+		
+		final Ruler ruler = new Ruler(blkSize);
+		controlPanel.add(ruler, "cell 2 0 4 6");
 				
 		buttonGroup = new ButtonGroup();
 				
@@ -88,25 +95,34 @@ public class NewBlockFrame extends JFrame {
 		buttonGroup.add(btnReset);
 		btnReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Ruler ruler = new Ruler(blkSize);
-				controlPanel.add(ruler, "cell 2 0 4 6");
 				controlPanel.repaint();
-				frmNewBlock.getContentPane().add(controlPanel);
 			}
 		});
 		controlPanel.add(btnReset, "cell 0 3,growx");
 								
 		btnUndo = new JButton("Undo Last");
 		buttonGroup.add(btnUndo);
+		btnUndo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				DrawPiece drawPiece = new DrawPiece(ruler.getGridSize());
+				blkLines = drawPiece.removeBlkLine(blkLines);
+				controlPanel.repaint();
+				drawPiece.redrawBlkLines(blkLines);
+//				controlPanel.add(drawPiece);
+//				
+//				controlPanel.repaint();
+			}
+		});
 		controlPanel.add(btnUndo, "cell 3 6,alignx left");
 				
 		btnSave = new JButton("Save");
 		buttonGroup.add(btnSave);
 		controlPanel.add(btnSave, "cell 4 6,alignx right");
 				
-		Ruler ruler = new Ruler(blkSize);
-		controlPanel.add(ruler, "cell 2 0 4 6");
 		frmNewBlock.getContentPane().add(controlPanel);
+		
 	}
 	/*
 	 * check if the size of the block is a prime number

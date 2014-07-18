@@ -2,6 +2,7 @@ package ca.bcit.comp2613.quiltpad.model;
 
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -23,6 +24,7 @@ public class Block {
 	private String name;
 	private Integer blkSize;
 	private Integer uniquePieces;
+	private ArrayList<BlkLine> blkLines;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "block_piece",
@@ -34,12 +36,13 @@ public class Block {
 	public Block() {
 		super();
 	}
-	public Block(Integer id, String name, Integer blkSize, Integer uniquePieces) {
-		//super();
+	public Block(Integer id, String name, Integer blkSize, Integer uniquePieces, 
+					ArrayList<BlkLine> blkLines) {
 		this.id = id;
 		this.name = name;
 		this.blkSize = blkSize;
 		this.uniquePieces = uniquePieces;
+		this.blkLines = blkLines;
 	
 	}
 	public Integer getId() {
@@ -67,6 +70,13 @@ public class Block {
 		this.uniquePieces = uniquePieces;
 	}
 	
+	public ArrayList<BlkLine> getBlkLines() {
+		return blkLines;
+	}
+	public void setBlkLines(ArrayList<BlkLine> blkLines) {
+		this.blkLines = blkLines;
+	}
+	
 	public List<Piece> getPieces() {
 		return pieces;
 	}
@@ -74,6 +84,7 @@ public class Block {
 		this.pieces = pieces;
 	}
 	
+
 	@Override
 	public String toString() {
 		return "Block [Id = " + id + ", Name = " + name + ", Size = " +
