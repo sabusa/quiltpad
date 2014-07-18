@@ -8,13 +8,9 @@ import javax.swing.JPanel;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.JButton;
-
-import ca.bcit.comp2613.quiltpad.model.BlkLine;
 
 @SuppressWarnings("serial")
 public class NewBlockFrame extends JFrame {
@@ -31,8 +27,7 @@ public class NewBlockFrame extends JFrame {
 	private JButton btnUndo;
 	private JButton btnSave;
 	private ButtonGroup buttonGroup;
-	private ArrayList<BlkLine> blkLines;
-		
+			
 	/* 
 	 * NewBlockFrame Constructor
 	 */

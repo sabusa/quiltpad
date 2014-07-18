@@ -6,7 +6,6 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 
@@ -67,7 +66,21 @@ public class Grid extends JPanel{
 		g2.drawRect(OFFSET, OFFSET, GRIDMAX-2, GRIDMAX-2);
 		g2.dispose();
 	}
-		
+	
+	/*public void redrawBlkLines(ArrayList<BlkLine> blkLines) {
+		for (int i=0; i<blkLines.size(); i++) {
+			Point startPt = blkLines.get(i).getStartPt();
+			Point stopPt = blkLines.get(i).getStopPt();
+			drawBlkLine(startPt, stopPt);
+		}
+	}
+	
+	public void drawBlkLine(Point startPt, Point stopPt) {
+		Graphics2D g2 = (Graphics2D) this.getGraphics();
+		g2.setColor(Color.BLACK);
+		g2.setStroke(new BasicStroke(3));
+		g2.drawLine(startPt.x, startPt.y, stopPt.x, stopPt.y);
+	}	*/
 }
 
 	
