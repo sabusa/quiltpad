@@ -74,7 +74,8 @@ public class NewBlockFrame extends JFrame {
 		frmNewBlock.setVisible(true);	
 		
 		controlPanel = new JPanel();
-		controlPanel.setLayout(new MigLayout("", "[100][15][3][287][287][3]", "[][12.00][25][25][25][500][][]"));
+		controlPanel.setLayout(new MigLayout("", "[100][15][3][287][287][3]", 
+										"[][12.00][25][25][25][500][][]"));
 		
 		final Ruler ruler = new Ruler(blkSize);
 		controlPanel.add(ruler, "cell 2 0 4 6");
@@ -104,15 +105,7 @@ public class NewBlockFrame extends JFrame {
 		buttonGroup.add(btnUndo);
 		btnUndo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				
-				DrawPiece drawPiece = new DrawPiece(ruler.getGridSize());
-				blkLines = drawPiece.removeBlkLine(blkLines);
-				controlPanel.repaint();
-				drawPiece.redrawBlkLines(blkLines);
-//				controlPanel.add(drawPiece);
-//				
-//				controlPanel.repaint();
+			// undo last line					
 			}
 		});
 		controlPanel.add(btnUndo, "cell 3 6,alignx left");

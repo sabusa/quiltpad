@@ -17,6 +17,16 @@ public class TestDriver {
 		final Logger log = Logger.getLogger(TestDriver.class);
 		*/
 		
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					new QuiltPad();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
 	//	Quilt quilt = new Quilt() {
 
@@ -101,16 +111,7 @@ public class TestDriver {
 			e.printStackTrace(); 
 		}	*/
 
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					new QuiltPad();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 	
 	
 }
