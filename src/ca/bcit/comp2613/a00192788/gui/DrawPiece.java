@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
+import ca.bcit.comp2613.a00192788.util.BlkLineUtil;
 import ca.bcit.comp2613.quiltpad.model.BlkLine;
 
 
@@ -48,8 +49,9 @@ public class DrawPiece extends JPanel{
 				// go to closest node from mouse pressed to start line
 				stopPt = goToClosestNode(e.getPoint());
 				circleNode(stopPt);
-				drawBlkLine(startPt, stopPt);
-				blkLines = addBlkLine(blkLines, startPt, stopPt);
+				BlkLineUtil blkLineUtil = new BlkLineUtil();
+				blkLineUtil.drawBlkLine(startPt, stopPt);
+				blkLines = blkLineUtil.addBlkLine(blkLines, startPt, stopPt);
 			}
 
 			@Override
@@ -111,7 +113,7 @@ public class DrawPiece extends JPanel{
 		}
 	}
 
-	public ArrayList<BlkLine> addBlkLine(ArrayList<BlkLine> blkLines,
+	/*public ArrayList<BlkLine> addBlkLine(ArrayList<BlkLine> blkLines,
 											Point startPt, Point stopPt) {
 		ArrayList<BlkLine> retval = blkLines;
 		blkLines.add(new BlkLine(startPt, stopPt));
@@ -129,17 +131,17 @@ public class DrawPiece extends JPanel{
 			Point startPt = blkLines.get(i).getStartPt();
 			Point stopPt = blkLines.get(i).getStopPt();
 			drawBlkLine(startPt, stopPt);
-		}
-	}
+		}*/
+
 	
-	public void drawBlkLine(Point startPt, Point stopPt) {
+	/*public void drawBlkLine(Point startPt, Point stopPt) {
 		Graphics2D g2 = (Graphics2D) this.getGraphics();
 		g2.setColor(Color.BLACK);
 		g2.setStroke(new BasicStroke(3));
 		g2.drawLine(startPt.x, startPt.y, stopPt.x, stopPt.y);
-	}
+	}*/
 
-	
 }
+
 
 

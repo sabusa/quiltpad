@@ -25,7 +25,7 @@ public class Grid extends JPanel{
 		Graphics2D g2 = (Graphics2D) g; 
 		drawGrid(gridSize);
 		g2.drawImage(gridBackground, 0, 0, this);
-		createOuterEdge(g2);
+	//	createOuterEdge(g2);
 	}
 	
 	 @Override

@@ -14,6 +14,7 @@ import net.miginfocom.swing.MigLayout;
 
 import javax.swing.JButton;
 
+import ca.bcit.comp2613.a00192788.util.BlkLineUtil;
 import ca.bcit.comp2613.quiltpad.model.BlkLine;
 
 @SuppressWarnings("serial")
@@ -107,9 +108,10 @@ public class NewBlockFrame extends JFrame {
 				
 				
 				DrawPiece drawPiece = new DrawPiece(ruler.getGridSize());
-				blkLines = drawPiece.removeBlkLine(blkLines);
+				BlkLineUtil blkLineUtil = new BlkLineUtil();
+				blkLines =  blkLineUtil.removeBlkLine(blkLines);
 				controlPanel.repaint();
-				drawPiece.redrawBlkLines(blkLines);
+				blkLineUtil.redrawBlkLines(blkLines);
 //				controlPanel.add(drawPiece);
 //				
 //				controlPanel.repaint();
