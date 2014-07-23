@@ -1,10 +1,12 @@
 package ca.bcit.comp2613.quiltpad;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.EntityManagerFactory;
+import javax.sql.DataSource;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -18,6 +20,7 @@ import ca.bcit.comp2613.quiltpad.repository.PieceRepository;
 
 
 public class QuiltPad {
+	public static boolean useInMemoryDB = true;
 	public static List<Block> blocks;
 	public static List<Piece> pieces;
 	public static BlockRepository blockRepository;
@@ -26,8 +29,18 @@ public class QuiltPad {
 	
 	public QuiltPad () {
 		ConfigurableApplicationContext context = null;
-		context = SpringApplication.run(MySQLConfig.class);
-	
+		if (useInMemoryDB) {
+			context = SpringApplication.run(H2Config.class);
+			try {
+				org.h2.tools.Server.createWebServer(null).start();
+				DataSource dataSource = (DataSource) context.getBean("dataSource");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		} else {
+			context = SpringApplication.run(MySQLConfig.class);
+		}
+
 		for (String beanDefinitionName : context.getBeanDefinitionNames()) {
 			System.out.println(beanDefinitionName);
 		}
