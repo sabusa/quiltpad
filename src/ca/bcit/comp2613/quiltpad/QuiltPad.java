@@ -12,6 +12,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import ca.bcit.comp2613.a00192788.gui.BlockFrame;
+import ca.bcit.comp2613.a00192788.util.BlockUtil;
+import ca.bcit.comp2613.a00192788.util.PieceUtil;
 import ca.bcit.comp2613.quiltpad.model.Block;
 import ca.bcit.comp2613.quiltpad.model.Piece;
 import ca.bcit.comp2613.quiltpad.repository.BlockRepository;
@@ -33,7 +35,6 @@ public class QuiltPad {
 			context = SpringApplication.run(H2Config.class);
 			try {
 				org.h2.tools.Server.createWebServer(null).start();
-				DataSource dataSource = (DataSource) context.getBean("dataSource");
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -50,10 +51,19 @@ public class QuiltPad {
 
 		blockRepository = context.getBean(BlockRepository.class);
 		pieceRepository = context.getBean(PieceRepository.class);
+		
+		// create blocks //
+		List<Block> blocks = BlockUtil.createBlocks();
+		blockRepository.save(blocks);
+		
+		// create pieces //
+		List<Piece> pieces = PieceUtil.createPieces();
+		pieceRepository.save(pieces);
+		
 		customQueryHelper = new CustomQueryHelper(emf);
 		blocks = copyIterator(blockRepository.findAll().iterator());
 		pieces = copyIterator(pieceRepository.findAll().iterator());
-		
+				
 		new BlockFrame();
 	}
 
