@@ -134,11 +134,18 @@ public class DrawPiece extends JPanel{
 	
 	public void drawBlkLine(Point startPt, Point stopPt) {
 		Graphics2D g2 = (Graphics2D) this.getGraphics();
-		g2.setColor(Color.BLACK);
+		g2.setColor(Color.RED);
 		g2.setStroke(new BasicStroke(3));
+		System.out.println(startPt.x);
+		System.out.println(startPt.y);
+		System.out.println(stopPt.x);
+		System.out.println(stopPt.y);
 		g2.drawLine(startPt.x, startPt.y, stopPt.x, stopPt.y);
+		drawPieceSingleton = this;
+		
 	}
 
+	public static DrawPiece drawPieceSingleton;
 	
 }
 
