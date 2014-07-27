@@ -14,16 +14,14 @@ public class Rule extends JComponent {
     private final int SIZE = 35;    // space required for ticks and numbers
     public static final int HORIZONTAL = 0;
     public static final int VERTICAL = 1; 
-    private int inch;
-    private int increment;
     private int lineLength;
     private int position;
     private String num;
+	private int gridSize;
 
     public Rule(int orientation, int gridSize) {
         this.orientation = orientation;
-        inch = gridSize;
-        increment = inch/2;
+        this.gridSize = gridSize;
     }
 
     protected void paintComponent(Graphics g) {
@@ -47,23 +45,19 @@ public class Rule extends JComponent {
 	}
 	
 	num = null;
-	for (int i = 0; i < PANELSIZE; i += increment) {
-		// check if unique case
-		if ((inch != 9) && (inch != 11) && (inch != 13)) {
-			// draw long ticks and number for full inches and short ticks for 1/2 inches
-			if (i % inch == 0)  { // full inch marking
-				lineLength = 10;
-				num = Integer.toString(i/inch);
-			}else {  // half inch marking
-				lineLength = 7;
-				num = null;
-			}
-		} // handle unique cases
-		else {
-			//handle unique cases
-			}
-      	// draw rulers
-      	position = i + OFFSET;	
+	for (int i = 0; i < (2 * PANELSIZE/gridSize); i++) {
+		// draw long ticks and number for full inches and short ticks for 1/2 inches
+		if(i % 2 == 0) {   // full inch marking
+			lineLength = 10;			
+			num = Integer.toString(i/2);
+		}
+		else {				      // half inch marking
+			lineLength = 7;
+			num = null;
+		}	
+		
+	   	// draw rulers
+      	position = (i * gridSize/2) + OFFSET;	
 	    if (orientation == HORIZONTAL) {
 	        g2.drawLine(position, SIZE-1, position, SIZE-lineLength-1);
 		    if (num != null)
