@@ -82,7 +82,7 @@ public class NewBlockFrame extends JFrame {
 		controlPanel.setLayout(new MigLayout("", "[100][15][3][287][287][3]",
 				"[][12.00][25][25][25][500][][]"));
 
-		final Ruler ruler = new Ruler(blkSize);
+		Ruler ruler = new Ruler(blkSize);
 		controlPanel.add(ruler, "cell 2 0 4 6");
 
 		buttonGroup = new ButtonGroup();

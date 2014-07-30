@@ -76,6 +76,13 @@ public class BlockFrame extends JFrame {
 					.getValueAt(blkTable.getSelectedRow(), 3).toString());
 		} catch (Exception e) {}
 	}
+	
+	public void showBlock() {
+			// Show specified block
+			int row = blkTable.getSelectedRow();
+			Integer id = (Integer) blkTable.getValueAt(row, 0);
+			new ShowBlockFrame(QuiltPad.blockRepository.findOne(id));
+		}
 
 	public void deleteBlock() {
 		int response = JOptionPane.showConfirmDialog(null, "Do you really want "
@@ -150,6 +157,11 @@ public class BlockFrame extends JFrame {
 			
 		btnShow = new JButton("Show ");
 		buttonGroup.add(btnShow);
+		btnShow.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				showBlock();
+			}
+		});
 		frmBlocks.add(btnShow, "cell 0 2, growx");
 		
 		btnDelete = new JButton("Delete");

@@ -38,9 +38,9 @@ public class DrawPiece extends JPanel{
 //		for(BlkLine blkLine : blkLines){
 //			System.out.println(blkLine.getStartPt());
 //		}
-//		if (!blkLines.isEmpty()) {
-//			redrawBlkLines(blkLines);
-//		}
+		if (!blkLines.isEmpty()) {
+			redrawBlkLines(blkLines);
+		}
 				
 		addMouseListener(new MouseListener() {     	  
 			public void mousePressed(MouseEvent e) {
@@ -137,13 +137,13 @@ public class DrawPiece extends JPanel{
 		return retval;
 	}
 	
-	/*public void redrawBlkLines(Graphics2D g2, ArrayList<BlkLine> blkLines) {
+	public void redrawBlkLines(ArrayList<BlkLine> blkLines) {
 		for (BlkLine blkLine : blkLines) {
 			Point startPt = blkLine.getStartPt();
 			Point stopPt = blkLine.getStopPt();
-			drawBlkLine(g2, startPt, stopPt);
+			drawBlkLine(startPt, stopPt);
 		}
-	}*/
+	}
 	private void drawBlkLine(Point startPt, Point stopPt) {
 		Graphics2D g2 = (Graphics2D) this.getGraphics();
 		g2.setColor(Color.BLACK);
