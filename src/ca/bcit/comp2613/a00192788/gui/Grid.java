@@ -72,7 +72,7 @@ public class Grid extends JPanel{
 	private void createOuterEdge(Graphics2D g2) {
 		g2.setColor(Color.BLACK);
 		g2.setStroke(new BasicStroke(3));
-		g2.drawRect(OFFSET, OFFSET, gridPane-2, gridPane-2);
+		g2.drawRect(OFFSET, OFFSET, gridPane, gridPane);
 		g2.dispose();
 	}
 	

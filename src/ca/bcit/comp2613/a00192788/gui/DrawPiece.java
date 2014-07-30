@@ -3,6 +3,7 @@ package ca.bcit.comp2613.a00192788.gui;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
@@ -23,13 +24,15 @@ public class DrawPiece extends JPanel{
 	private Point startPt, stopPt;
 	private Integer gridSize;
 	private Integer blkSize;
+	private Integer gridPane;
 	private static ArrayList<BlkLine> blkLines;
 	
 	public DrawPiece(Integer grid, Integer blk, ArrayList<BlkLine> lines) {
-	//	setPreferredSize(new Dimension(PANESIZE, PANESIZE));
+		setPreferredSize(new Dimension(PANESIZE, PANESIZE));
 		blkLines = lines;
 		gridSize = grid;
 		blkSize = blk;
+		gridPane = gridSize * blkSize;
 		// add grid
 		add(new Grid(gridSize, blkSize));
 //		for(BlkLine blkLine : blkLines){
@@ -102,7 +105,7 @@ public class DrawPiece extends JPanel{
 			yInter = y + (gridSize-modY);  // move down on y-axis
 		}
 			
-		return new Point(xInter+OFFSET, yInter+OFFSET);
+		return new Point(xInter+OFFSET, yInter+OFFSET-1);
 	}
 	
 	 /* 
@@ -115,10 +118,9 @@ public class DrawPiece extends JPanel{
 		
 		// check to see point is within panel
 		if ((pt.x>=0 && pt.x<=PANESIZE) && (pt.y>=0 && pt.y<=PANESIZE)) {
-			
-		//draw circle
-		g2.drawOval(pt.x-4, pt.y-4, 8, 8);
-		g2.dispose();
+			//draw circle
+			g2.drawOval(pt.x-4, pt.y-4, 8, 8);
+			g2.dispose();
 		}
 	}
 
