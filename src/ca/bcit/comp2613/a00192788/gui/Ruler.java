@@ -9,18 +9,19 @@ import javax.swing.JScrollPane;
 @SuppressWarnings("serial")
 public class Ruler extends JPanel {
 
+	private static final Integer GRIDMAX = 480;
 	private final int PANELSIZE = 580;
 	private Rule columnView;
 	private Rule rowView;
     private JScrollPane ruler;
-	private int gridSize;
+	private static int gridSize;
 	
 
 	public Ruler(Integer blkSize) {
 		
 		// create scroll pane
-		gridSize = Grid.calcGrid(blkSize);
-		ruler = new JScrollPane(new DrawPiece(gridSize), 
+		gridSize = calcGrid(blkSize);
+		ruler = new JScrollPane(new DrawPiece(gridSize, blkSize), 
 								JScrollPane.VERTICAL_SCROLLBAR_NEVER,
 								JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 	   	ruler.setPreferredSize(new Dimension(PANELSIZE, PANELSIZE));
@@ -46,17 +47,11 @@ public class Ruler extends JPanel {
      //   setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
 	}
 
-
-	public int getGridSize() {
-		return gridSize;
+	public static Integer calcGrid(Integer blkSize) {
+		gridSize = GRIDMAX / blkSize;
+    	return gridSize;
 	}
 
-
-	public void setGridSize(int gridSize) {
-		this.gridSize = gridSize;
-	}
-
-
-	  
+		  
 }
 
