@@ -32,12 +32,12 @@ public class DrawPiece extends JPanel{
 		blkSize = blk;
 		// add grid
 		add(new Grid(gridSize, blkSize));
-		for(BlkLine blkLine : blkLines){
-			System.out.println(blkLine.getStartPt());
-		}
-		if (!blkLines.isEmpty()) {
-			redrawBlkLines(blkLines);
-		}
+//		for(BlkLine blkLine : blkLines){
+//			System.out.println(blkLine.getStartPt());
+//		}
+//		if (!blkLines.isEmpty()) {
+//			redrawBlkLines(blkLines);
+//		}
 				
 		addMouseListener(new MouseListener() {     	  
 			public void mousePressed(MouseEvent e) {
@@ -129,19 +129,19 @@ public class DrawPiece extends JPanel{
 		return retval;
 	}
 	
-	public ArrayList<BlkLine> removeBlkLine(ArrayList<BlkLine> blkLines) {
+	public static ArrayList<BlkLine> removeBlkLine(ArrayList<BlkLine> blkLines) {
 		ArrayList<BlkLine> retval = blkLines;
 		blkLines.remove(blkLines.size() - 1);
 		return retval;
 	}
 	
-	public void redrawBlkLines(ArrayList<BlkLine> blkLines) {
+	/*public void redrawBlkLines(Graphics2D g2, ArrayList<BlkLine> blkLines) {
 		for (BlkLine blkLine : blkLines) {
 			Point startPt = blkLine.getStartPt();
 			Point stopPt = blkLine.getStopPt();
-			drawBlkLine(startPt, stopPt);
+			drawBlkLine(g2, startPt, stopPt);
 		}
-	}
+	}*/
 	private void drawBlkLine(Point startPt, Point stopPt) {
 		Graphics2D g2 = (Graphics2D) this.getGraphics();
 		g2.setColor(Color.BLACK);
@@ -150,12 +150,12 @@ public class DrawPiece extends JPanel{
 		
 	}
 	
-	/*public void drawBlkLine(Graphics2D g2, Point startPt, Point stopPt) {
+/*	public void drawBlkLine(Graphics2D g2, Point startPt, Point stopPt) {
 	//	Graphics2D g2 = (Graphics2D) this.getGraphics();
 		g2.setColor(Color.BLACK);
 		g2.setStroke(new BasicStroke(3));
 		g2.drawLine(startPt.x, startPt.y, stopPt.x, stopPt.y);
-	//	drawPieceSingleton = this;
+		drawPieceSingleton = this;
 	}*/
 	
 	public static ArrayList<BlkLine> getBlkLines() {

@@ -12,12 +12,15 @@ import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Random;
 
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.JButton;
 
+import ca.bcit.comp2613.quiltpad.QuiltPad;
 import ca.bcit.comp2613.quiltpad.model.BlkLine;
+import ca.bcit.comp2613.quiltpad.model.Block;
 
 @SuppressWarnings("serial")
 public class NewBlockFrame extends JFrame {
@@ -31,7 +34,7 @@ public class NewBlockFrame extends JFrame {
 	private boolean validSize;
 	private JButton btnNew;
 	private JButton btnReset;
-	private JButton btnUndo;
+//	private JButton btnUndo;
 	private JButton btnSave;
 	private ButtonGroup buttonGroup;
 	private ArrayList<BlkLine> blkLines;
@@ -71,7 +74,7 @@ public class NewBlockFrame extends JFrame {
 		frmNewBlock = new JFrame();
 		frmNewBlock.setPreferredSize(new Dimension(750, 700));
 		frmNewBlock.setTitle("New Block");
-		frmNewBlock.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmNewBlock.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmNewBlock.pack();
 		frmNewBlock.setVisible(true);
 
@@ -103,23 +106,18 @@ public class NewBlockFrame extends JFrame {
 		});
 		controlPanel.add(btnReset, "cell 0 3,growx");
 
-		btnUndo = new JButton("Undo Last");
+	/*	btnUndo = new JButton("Undo Last");
 		buttonGroup.add(btnUndo);
 		btnUndo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				blkLines = DrawPiece.getBlkLines();
-				DrawPiece drawPiece = new DrawPiece(ruler.getGridSize(),blkSize, blkLines);
-				for(BlkLine blkLine : blkLines){
-					System.out.println(blkLine.getStartPt());
-				}
-				blkLines = drawPiece.removeBlkLine(blkLines);
-				for(BlkLine blkLine : blkLines){
-					System.out.println(blkLine.getStartPt());
-				}
-				drawPiece.repaint();
-				drawPiece = new DrawPiece(ruler.getGridSize(),blkSize, blkLines);
+				blkLines = DrawPiece.removeBlkLine(blkLines);
+				ruler.repaint();
+				ruler.add(new DrawBlock(blkLines));
+				ruler.repaint();
 				
-//
+					*/						
+
 //				Graphics2D g2 = (Graphics2D) drawPiece.drawPieceSingleton
 //						.getGraphics();
 //
@@ -128,9 +126,8 @@ public class NewBlockFrame extends JFrame {
 //					public void run() {
 //						Graphics2D g2 = (Graphics2D) drawPiece.drawPieceSingleton
 //								.getGraphics();
-//						g2.setColor(Color.RED);
-//						g2.setStroke(new BasicStroke(3));
 //						
+//						drawPiece.redrawBlkLines(g2, blkLines);						
 //					
 //					}
 //
@@ -139,14 +136,28 @@ public class NewBlockFrame extends JFrame {
 //
 //				g2.setColor(Color.RED);
 //
-			}
-	});
-		controlPanel.add(btnUndo, "cell 3 6,alignx left");
+//			}
+//	});
+//		controlPanel.add(btnUndo, "cell 3 6,alignx left");
 
 		btnSave = new JButton("Save");
 		buttonGroup.add(btnSave);
+		btnSave.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Random rand = new Random();
+				String blkName = JOptionPane.showInputDialog("Please enter "
+						+ "a name for the block: ");
+				int id = blkLines.size() + 1;
+				int uPieces = rand.nextInt(12) + 1;
+				Block block = new Block(id, blkName, blkSize, uPieces, blkLines);
+				QuiltPad.blockRepository.save(block);
+				frmNewBlock.dispose();
+				new BlockFrame();
+				
+			}
+		});
 		controlPanel.add(btnSave, "cell 4 6,alignx right");
-
+		
 		frmNewBlock.getContentPane().add(controlPanel);
 
 	}
@@ -161,3 +172,4 @@ public class NewBlockFrame extends JFrame {
 	 */
 
 }
+

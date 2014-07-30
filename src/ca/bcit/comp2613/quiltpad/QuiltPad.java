@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.EntityManagerFactory;
-import javax.sql.DataSource;
+//import javax.sql.DataSource;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;

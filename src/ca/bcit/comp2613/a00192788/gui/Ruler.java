@@ -27,10 +27,11 @@ public class Ruler extends JPanel {
 		// create scroll pane
 		gridSize = calcGrid(blkSize);
 		blkLines = new ArrayList<BlkLine>();
-		ruler = new JScrollPane(new DrawPiece(gridSize, blkSize, blkLines), 
-								JScrollPane.VERTICAL_SCROLLBAR_NEVER,
+		
+		ruler = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_NEVER,
 								JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 	   	ruler.setPreferredSize(new Dimension(PANELSIZE, PANELSIZE));
+	   	ruler.setViewportView(new DrawPiece(gridSize, blkSize, blkLines));
 		ruler.setViewportBorder(BorderFactory.createLineBorder(Color.black));
 
 		// add horizontal ruler

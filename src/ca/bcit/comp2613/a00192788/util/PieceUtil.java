@@ -15,7 +15,7 @@ import org.apache.log4j.Logger;
 public class PieceUtil {
 	private final static Integer MAX_LENGTH = 100;
 	private final static Integer MAX_HYP = 24;
-	private final static Integer MAX_OBJS = 100;	
+	private final static Integer MAX_OBJS = 20;	
 	
 	static Logger log = Logger.getLogger(PieceUtil.class);
 	

@@ -13,7 +13,7 @@ import ca.bcit.comp2613.quiltpad.model.Block;
 public class BlockUtil {
 	
 	private final static Integer MAX_QTY = 17;
-	private final static Integer MAX_OBJS = 100;
+	private final static Integer MAX_OBJS = 20;
 	static Logger log = Logger.getLogger(BlockUtil.class);
 	
 	public static List<Block> createBlocks() {

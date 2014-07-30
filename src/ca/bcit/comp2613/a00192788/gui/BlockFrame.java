@@ -95,10 +95,10 @@ public class BlockFrame extends JFrame {
 	private void refreshTable() {
 			
 		Object[][] blkData = null;
-		QuiltPad.blocks = QuiltPad.copyIterator(QuiltPad.blockRepository.findAll().iterator());
-		blkData = new Object[QuiltPad.blocks.size()][4];
+		blocks = QuiltPad.copyIterator(QuiltPad.blockRepository.findAll().iterator());
+		blkData = new Object[blocks.size()][4];
 		int i = 0;
-		for (Block block : QuiltPad.blocks) {
+		for (Block block : blocks) {
 			blkData[i][0] = block.getId();
 			blkData[i][1] = block.getName();
 			blkData[i][2] = block.getBlkSize();
@@ -134,6 +134,7 @@ public class BlockFrame extends JFrame {
 		btnNew.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new NewBlockFrame();
+				frmBlocks.dispose();
 			}
 		});
 		frmBlocks.add(btnNew, "cell 0 0, growx");
