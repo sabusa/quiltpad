@@ -20,13 +20,15 @@ public class DrawPiece extends JPanel{
 	private final int PANESIZE = 520;	
 	private Point startPt, stopPt;
 	private Integer gridSize;
+	private Integer blkSize;
 	private static ArrayList<BlkLine> blkLines = new ArrayList<BlkLine>();
 	
-	public DrawPiece(Integer gridSize) {
+	public DrawPiece(Integer grid, Integer blk) {
 	//	setPreferredSize(new Dimension(PANESIZE, PANESIZE));
-		this.gridSize = gridSize;
+		gridSize = grid;
+		blkSize = blk;
 		// add grid
-		add(new Grid());
+		add(new Grid(gridSize, blkSize));
 		
 		
 		addMouseListener(new MouseListener() {     	  

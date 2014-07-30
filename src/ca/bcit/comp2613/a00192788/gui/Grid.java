@@ -15,14 +15,22 @@ public class Grid extends JPanel{
 	private final static int GRIDMAX = 480;
 	private static final int PANESIZE = 520;
 	private static final int OFFSET = 20;
-	private static Integer gridSize;
+	private Integer gridSize;
+	private Integer blkSize;
+	private static Integer gridPane;
 	private static BufferedImage gridBackground;
 	
+	public Grid(Integer grid, Integer blk) {
+		this.gridSize = grid;
+		this.blkSize = blk;
+		
+		gridPane = gridSize * blkSize;
+	}
 	
 	protected void paintComponent(Graphics g) { 
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g; 
-		drawGrid(gridSize);
+		drawGrid(gridPane, gridSize);
 		g2.drawImage(gridBackground, 0, 0, this);
 		createOuterEdge(g2);
 	}
@@ -35,7 +43,7 @@ public class Grid extends JPanel{
 	 /* 
 	  * Draw the grid lines for the specified grid size
 	  * */  
-	public static void drawGrid (Integer gridSize) {
+	public static void drawGrid (Integer gridPane, Integer gridSize) {
 		Graphics2D g2;
 		gridBackground = new BufferedImage (PANESIZE, PANESIZE, BufferedImage.TYPE_INT_RGB);
 		g2 = gridBackground.createGraphics();
@@ -44,9 +52,9 @@ public class Grid extends JPanel{
 			
 		// create grid lines
 		g2.setColor(Color.LIGHT_GRAY);
-		for (int i=OFFSET; i<PANESIZE+OFFSET; i+=gridSize) {
-			g2.drawLine(i, OFFSET, i, PANESIZE-OFFSET);  // draw vertical lines
-			g2.drawLine(OFFSET, i, PANESIZE-OFFSET, i);  // draw horizontal lines
+		for (int i=OFFSET; i<(gridPane+OFFSET); i+=gridSize) {
+			g2.drawLine(i, OFFSET, i, gridPane+OFFSET);  // draw vertical lines
+			g2.drawLine(OFFSET, i, gridPane+OFFSET, i);  // draw horizontal lines
 		}
 		g2.dispose();
 	}
@@ -54,16 +62,16 @@ public class Grid extends JPanel{
 	 /* 
      * Determine grid size based on block size for best fit in panel
      */ 
-	public static Integer calcGrid(Integer blkSize) {
+	/*public static Integer calcGrid(Integer blkSize) {
     	return gridSize = GRIDMAX / blkSize;
-	}
+	}*/
 	/* 
 	 * Draw a line along the block's edges
 	 */
 	private void createOuterEdge(Graphics2D g2) {
 		g2.setColor(Color.BLACK);
 		g2.setStroke(new BasicStroke(3));
-		g2.drawRect(OFFSET, OFFSET, GRIDMAX-2, GRIDMAX-2);
+		g2.drawRect(OFFSET, OFFSET, gridPane-2, gridPane-2);
 		g2.dispose();
 	}
 	
