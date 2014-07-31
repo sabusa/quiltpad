@@ -119,7 +119,7 @@
 			<!-- <executions> -->
 			<!-- <execution> -->
 			<!-- <configuration> -->
-			<!-- <mainClass>ca.bcit.comp2613.quiltpad.Testdriver</mainClass> -->
+			<!-- <mainClass>ca.bcit.comp2613.quiltpad.TestDriver</mainClass> -->
 			<!-- Optional -->
 			<!-- <onejarVersion>0.97</onejarVersion> -->
 			<!-- Optional, use only if you need to include native libraries (dll's) -->
