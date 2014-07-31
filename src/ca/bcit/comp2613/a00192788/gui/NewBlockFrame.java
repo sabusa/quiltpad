@@ -147,7 +147,7 @@ public class NewBlockFrame extends JFrame {
 				Random rand = new Random();
 				String blkName = JOptionPane.showInputDialog("Please enter "
 						+ "a name for the block: ");
-				int id = blkLines.size() + 1;
+				int id = (int)QuiltPad.blockRepository.count() + 1;
 				int uPieces = rand.nextInt(12) + 1;
 				Block block = new Block(id, blkName, blkSize, uPieces, blkLines);
 				QuiltPad.blockRepository.save(block);

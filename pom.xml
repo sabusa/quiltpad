@@ -85,40 +85,9 @@
 					</execution>
 				</executions>
 			</plugin>
-
-			<!-- <plugin> -->
-			<!-- <groupId>org.dstovall</groupId> -->
-			<!-- <artifactId>onejar-maven-plugin</artifactId> -->
-			<!-- <version>1.4.4</version> -->
-			<!-- <executions> -->
-			<!-- <execution> -->
-			<!-- <configuration> -->
-			<!-- <mainClass>ca.bcit.comp2613.quiltpad.TestDriver</mainClass> -->
-			<!-- Optional -->
-			<!-- <onejarVersion>0.97</onejarVersion> -->
-			<!-- Optional, use only if you need to include native libraries (dll's) -->
-			<!-- <binlibs> -->
-			<!-- <fileSet> -->
-			<!-- <directory>dllextract</directory> -->
-
-			<!-- </fileSet> -->
-			<!-- </binlibs> -->
-			<!-- Optional, default is false -->
-			<!-- <attachToBuild>false</attachToBuild> -->
-			<!-- Optional, default is "onejar" -->
-			<!-- <classifier>onejar</classifier> -->
-			<!-- </configuration> -->
-			<!-- <goals> -->
-			<!-- <goal>one-jar</goal> -->
-			<!-- </goals> -->
-			<!-- </execution> -->
-			<!-- </executions> -->
-			<!-- </plugin> -->
-		</plugins>
-
-
-
-		<pluginManagement>
+	</plugins>
+	
+	<pluginManagement>
 			<plugins>
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
